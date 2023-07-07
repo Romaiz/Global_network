@@ -1,0 +1,729 @@
+country_code,country_name,country_border_code,country_border_name,Population (2020)
+AD,Andorra,FR,France,397628.0
+AD,Andorra,ES,Spain,397628.0
+AE,United Arab Emirates,OM,Oman,9890402.0
+AE,United Arab Emirates,SA,Saudi Arabia,9890402.0
+AF,Afghanistan,CN,China,38928346.0
+AF,Afghanistan,IR,Iran (Islamic Republic of),38928346.0
+AF,Afghanistan,PK,Pakistan,38928346.0
+AF,Afghanistan,TJ,Tajikistan,38928346.0
+AF,Afghanistan,TM,Turkmenistan,38928346.0
+AF,Afghanistan,UZ,Uzbekistan,38928346.0
+AG,Antigua and Barbuda,,,97929.0
+AI,Anguilla,,,397628.0
+AL,Albania,GR,Greece,2877797.0
+AL,Albania,ME,Montenegro,2877797.0
+AL,Albania,MK,North Macedonia,2877797.0
+AL,Albania,RS,Serbia,2877797.0
+AM,Armenia,AZ,Azerbaijan,2963243.0
+AM,Armenia,GE,Georgia,2963243.0
+AM,Armenia,IR,Iran (Islamic Republic of),2963243.0
+AM,Armenia,TR,Turkey,2963243.0
+AO,Angola,CG,Congo,32866272.0
+AO,Angola,CD,Congo (the Democratic Republic of the),32866272.0
+AO,Angola,,Namibia,32866272.0
+AO,Angola,ZM,Zambia,32866272.0
+AQ,Antarctica,,,397628.0
+AR,Argentina,BO,Bolivia (Plurinational State Of),45195774.0
+AR,Argentina,BR,Brazil,45195774.0
+AR,Argentina,CL,Chile,45195774.0
+AR,Argentina,PY,Paraguay,45195774.0
+AR,Argentina,UY,Uruguay,45195774.0
+AS,American Samoa,,,397628.0
+AT,Austria,CZ,Czechia,9006398.0
+AT,Austria,DE,Germany,9006398.0
+AT,Austria,HU,Hungary,9006398.0
+AT,Austria,IT,Italy,9006398.0
+AT,Austria,LI,Liechtenstein,9006398.0
+AT,Austria,SK,Slovakia,9006398.0
+AT,Austria,SI,Slovenia,9006398.0
+AT,Austria,CH,Switzerland,9006398.0
+AU,Australia,,,25499884.0
+AW,Aruba,,,106766.0
+AX,Aland Islands,,,397628.0
+AZ,Azerbaijan,AM,Armenia,10139177.0
+AZ,Azerbaijan,GE,Georgia,10139177.0
+AZ,Azerbaijan,IR,Iran (Islamic Republic of),10139177.0
+AZ,Azerbaijan,RU,Russian Federation,10139177.0
+AZ,Azerbaijan,TR,Turkey,10139177.0
+BA,Bosnia and Herzegovina,HR,Croatia,3280819.0
+BA,Bosnia and Herzegovina,ME,Montenegro,3280819.0
+BA,Bosnia and Herzegovina,RS,Serbia,3280819.0
+BB,Barbados,,,287375.0
+BD,Bangladesh,IN,India,164689383.0
+BD,Bangladesh,MM,Myanmar,164689383.0
+BE,Belgium,FR,France,11589623.0
+BE,Belgium,DE,Germany,11589623.0
+BE,Belgium,LU,Luxembourg,11589623.0
+BE,Belgium,NL,Netherlands,11589623.0
+BF,Burkina Faso,BJ,Benin,20903273.0
+BF,Burkina Faso,CI,Cote d’Ivoire,20903273.0
+BF,Burkina Faso,GH,Ghana,20903273.0
+BF,Burkina Faso,ML,Mali,20903273.0
+BF,Burkina Faso,NE,Niger,20903273.0
+BF,Burkina Faso,TG,Togo,20903273.0
+BG,Bulgaria,GR,Greece,6948445.0
+BG,Bulgaria,MK,North Macedonia,6948445.0
+BG,Bulgaria,RO,Romania,6948445.0
+BG,Bulgaria,RS,Serbia,6948445.0
+BG,Bulgaria,TR,Turkey,6948445.0
+BH,Bahrain,,,1701575.0
+BI,Burundi,CD,Congo (the Democratic Republic of the),11890784.0
+BI,Burundi,RW,Rwanda,11890784.0
+BI,Burundi,TZ,Tanzania (the United Republic of),11890784.0
+BJ,Benin,BF,Burkina Faso,12123200.0
+BJ,Benin,NE,Niger,12123200.0
+BJ,Benin,NG,Nigeria,12123200.0
+BJ,Benin,TG,Togo,12123200.0
+BL,Saint Barthelemy,,,397628.0
+BM,Bermuda,,,397628.0
+BN,Brunei Darussalam,MY,Malaysia,397628.0
+BO,Bolivia (Plurinational State Of),AR,Argentina,397628.0
+BO,Bolivia (Plurinational State Of),BR,Brazil,397628.0
+BO,Bolivia (Plurinational State Of),CL,Chile,397628.0
+BO,Bolivia (Plurinational State Of),PY,Paraguay,397628.0
+BO,Bolivia (Plurinational State Of),PE,Peru,397628.0
+BQ,"Bonaire, Sint Eustatius and Saba",,,397628.0
+BR,Brazil,AR,Argentina,212559417.0
+BR,Brazil,BO,Bolivia (Plurinational State Of),212559417.0
+BR,Brazil,CO,Colombia,212559417.0
+BR,Brazil,GF,French Guiana,212559417.0
+BR,Brazil,GY,Guyana,212559417.0
+BR,Brazil,PY,Paraguay,212559417.0
+BR,Brazil,PE,Peru,212559417.0
+BR,Brazil,SR,Suriname,212559417.0
+BR,Brazil,UY,Uruguay,212559417.0
+BR,Brazil,VE,Venezuela (Bolivarian Republic of),212559417.0
+BS,Bahamas,,,393244.0
+BT,Bhutan,CN,China,771608.0
+BT,Bhutan,IN,India,771608.0
+BV,Bouvet Island,,,397628.0
+BW,Botswana,,Namibia,2351627.0
+BW,Botswana,ZA,South Africa,2351627.0
+BW,Botswana,ZM,Zambia,2351627.0
+BW,Botswana,ZW,Zimbabwe,2351627.0
+BY,Belarus,LV,Latvia,9449323.0
+BY,Belarus,LT,Lithuania,9449323.0
+BY,Belarus,PL,Poland,9449323.0
+BY,Belarus,RU,Russian Federation,9449323.0
+BY,Belarus,UA,Ukraine,9449323.0
+BZ,Belize,GT,Guatemala,397628.0
+BZ,Belize,MX,Mexico,397628.0
+CA,Canada,US,United States of America,37742154.0
+CC,Cocos (Keeling) Islands,,,397628.0
+CD,Congo (the Democratic Republic of the),AO,Angola,397628.0
+CD,Congo (the Democratic Republic of the),BI,Burundi,397628.0
+CD,Congo (the Democratic Republic of the),CF,Central African Republic,397628.0
+CD,Congo (the Democratic Republic of the),CG,Congo,397628.0
+CD,Congo (the Democratic Republic of the),RW,Rwanda,397628.0
+CD,Congo (the Democratic Republic of the),SS,South Sudan,397628.0
+CD,Congo (the Democratic Republic of the),TZ,Tanzania (the United Republic of),397628.0
+CD,Congo (the Democratic Republic of the),UG,Uganda,397628.0
+CD,Congo (the Democratic Republic of the),ZM,Zambia,397628.0
+CF,Central African Republic,CM,Cameroon,4829767.0
+CF,Central African Republic,TD,Chad,4829767.0
+CF,Central African Republic,CG,Congo,4829767.0
+CF,Central African Republic,CD,Congo (the Democratic Republic of the),4829767.0
+CF,Central African Republic,SS,South Sudan,4829767.0
+CF,Central African Republic,SD,Sudan,4829767.0
+CG,Congo,AO,Angola,5518087.0
+CG,Congo,CM,Cameroon,5518087.0
+CG,Congo,CF,Central African Republic,5518087.0
+CG,Congo,CD,Congo (the Democratic Republic of the),5518087.0
+CG,Congo,GA,Gabon,5518087.0
+CH,Switzerland,AT,Austria,8654622.0
+CH,Switzerland,FR,France,8654622.0
+CH,Switzerland,DE,Germany,8654622.0
+CH,Switzerland,IT,Italy,8654622.0
+CH,Switzerland,LI,Liechtenstein,8654622.0
+CI,Cote d’Ivoire,BF,Burkina Faso,397628.0
+CI,Cote d’Ivoire,GH,Ghana,397628.0
+CI,Cote d’Ivoire,GN,Guinea,397628.0
+CI,Cote d’Ivoire,LR,Liberia,397628.0
+CI,Cote d’Ivoire,ML,Mali,397628.0
+CK,Cook Islands,,,397628.0
+CL,Chile,AR,Argentina,19116201.0
+CL,Chile,BO,Bolivia (Plurinational State Of),19116201.0
+CL,Chile,PE,Peru,19116201.0
+CM,Cameroon,CF,Central African Republic,26545863.0
+CM,Cameroon,TD,Chad,26545863.0
+CM,Cameroon,CG,Congo,26545863.0
+CM,Cameroon,GQ,Equatorial Guinea,26545863.0
+CM,Cameroon,GA,Gabon,26545863.0
+CM,Cameroon,NG,Nigeria,26545863.0
+CN,China,AF,Afghanistan,1439323776.0
+CN,China,BT,Bhutan,1439323776.0
+CN,China,HK,Hong Kong,1439323776.0
+CN,China,IN,India,1439323776.0
+CN,China,KZ,Kazakhstan,1439323776.0
+CN,China,KP,Korea (Democratic People's Republic of),1439323776.0
+CN,China,KG,Kyrgyzstan,1439323776.0
+CN,China,LA,Lao People's Democratic Republic,1439323776.0
+CN,China,MO,Macao,1439323776.0
+CN,China,MN,Mongolia,1439323776.0
+CN,China,MM,Myanmar,1439323776.0
+CN,China,NP,Nepal,1439323776.0
+CN,China,PK,Pakistan,1439323776.0
+CN,China,RU,Russian Federation,1439323776.0
+CN,China,TJ,Tajikistan,1439323776.0
+CN,China,VN,Viet Nam,1439323776.0
+CO,Colombia,BR,Brazil,50882891.0
+CO,Colombia,EC,Ecuador,50882891.0
+CO,Colombia,PA,Panama,50882891.0
+CO,Colombia,PE,Peru,50882891.0
+CO,Colombia,VE,Venezuela (Bolivarian Republic of),50882891.0
+CR,Costa Rica,NI,Nicaragua,5094118.0
+CR,Costa Rica,PA,Panama,5094118.0
+CU,Cuba,,,11326616.0
+CV,Cabo Verde,,,555987.0
+CW,Curacao,,,397628.0
+CX,Christmas Island,,,397628.0
+CY,Cyprus,,,1207359.0
+CZ,Czechia,AT,Austria,397628.0
+CZ,Czechia,DE,Germany,397628.0
+CZ,Czechia,PL,Poland,397628.0
+CZ,Czechia,SK,Slovakia,397628.0
+DE,Germany,AT,Austria,83783942.0
+DE,Germany,BE,Belgium,83783942.0
+DE,Germany,CZ,Czechia,83783942.0
+DE,Germany,DK,Denmark,83783942.0
+DE,Germany,FR,France,83783942.0
+DE,Germany,LU,Luxembourg,83783942.0
+DE,Germany,NL,Netherlands,83783942.0
+DE,Germany,PL,Poland,83783942.0
+DE,Germany,CH,Switzerland,83783942.0
+DJ,Djibouti,ER,Eritrea,988000.0
+DJ,Djibouti,ET,Ethiopia,988000.0
+DJ,Djibouti,SO,Somalia,988000.0
+DK,Denmark,DE,Germany,5792202.0
+DM,Dominica,,,397628.0
+DO,Dominican Republic,HT,Haiti,10847910.0
+DZ,Algeria,LY,Libya,43851044.0
+DZ,Algeria,ML,Mali,43851044.0
+DZ,Algeria,MR,Mauritania,43851044.0
+DZ,Algeria,MA,Morocco,43851044.0
+DZ,Algeria,NE,Niger,43851044.0
+DZ,Algeria,TN,Tunisia,43851044.0
+DZ,Algeria,EH,Western Sahara,43851044.0
+EC,Ecuador,CO,Colombia,17643054.0
+EC,Ecuador,PE,Peru,17643054.0
+EE,Estonia,LV,Latvia,1326535.0
+EE,Estonia,RU,Russian Federation,1326535.0
+EG,Egypt,IL,Israel,102334404.0
+EG,Egypt,LY,Libya,102334404.0
+EG,Egypt,PS,"Palestine, State of",102334404.0
+EG,Egypt,SD,Sudan,102334404.0
+EH,Western Sahara,DZ,Algeria,597339.0
+EH,Western Sahara,MR,Mauritania,597339.0
+EH,Western Sahara,MA,Morocco,597339.0
+ER,Eritrea,DJ,Djibouti,3546421.0
+ER,Eritrea,ET,Ethiopia,3546421.0
+ER,Eritrea,SD,Sudan,3546421.0
+ES,Spain,AD,Andorra,46754778.0
+ES,Spain,FR,France,46754778.0
+ES,Spain,GI,Gibraltar,46754778.0
+ES,Spain,MA,Morocco,46754778.0
+ES,Spain,PT,Portugal,46754778.0
+ET,Ethiopia,DJ,Djibouti,114963588.0
+ET,Ethiopia,ER,Eritrea,114963588.0
+ET,Ethiopia,KE,Kenya,114963588.0
+ET,Ethiopia,SO,Somalia,114963588.0
+ET,Ethiopia,SS,South Sudan,114963588.0
+ET,Ethiopia,SD,Sudan,114963588.0
+FI,Finland,NO,Norway,5540720.0
+FI,Finland,RU,Russian Federation,5540720.0
+FI,Finland,SE,Sweden,5540720.0
+FJ,Fiji,,,896445.0
+FK,Falkland Islands (Malvinas),,,397628.0
+FM,Micronesia (Federated States of),,,397628.0
+FO,Faroe Islands,,,397628.0
+FR,France,AD,Andorra,65273511.0
+FR,France,BE,Belgium,65273511.0
+FR,France,DE,Germany,65273511.0
+FR,France,IT,Italy,65273511.0
+FR,France,LU,Luxembourg,65273511.0
+FR,France,MC,Monaco,65273511.0
+FR,France,ES,Spain,65273511.0
+FR,France,CH,Switzerland,65273511.0
+GA,Gabon,CM,Cameroon,2225734.0
+GA,Gabon,CG,Congo,2225734.0
+GA,Gabon,GQ,Equatorial Guinea,2225734.0
+GB,United Kingdom of Great Britain and Northern Ireland,IE,Ireland,397628.0
+GD,Grenada,,,112523.0
+GE,Georgia,AM,Armenia,3989167.0
+GE,Georgia,AZ,Azerbaijan,3989167.0
+GE,Georgia,RU,Russian Federation,3989167.0
+GE,Georgia,TR,Turkey,3989167.0
+GF,French Guiana,BR,Brazil,298682.0
+GF,French Guiana,SR,Suriname,298682.0
+GG,Guernsey,,,397628.0
+GH,Ghana,BF,Burkina Faso,31072940.0
+GH,Ghana,CI,Cote d’Ivoire,31072940.0
+GH,Ghana,TG,Togo,31072940.0
+GI,Gibraltar,ES,Spain,397628.0
+GL,Greenland,,,397628.0
+GM,Gambia (the),SN,Senegal,397628.0
+GN,Guinea,CI,Cote d’Ivoire,13132795.0
+GN,Guinea,GW,Guinea-Bissau,13132795.0
+GN,Guinea,LR,Liberia,13132795.0
+GN,Guinea,ML,Mali,13132795.0
+GN,Guinea,SN,Senegal,13132795.0
+GN,Guinea,SL,Sierra Leone,13132795.0
+GP,Guadeloupe,,,400124.0
+GQ,Equatorial Guinea,CM,Cameroon,1402985.0
+GQ,Equatorial Guinea,GA,Gabon,1402985.0
+GR,Greece,AL,Albania,10423054.0
+GR,Greece,BG,Bulgaria,10423054.0
+GR,Greece,MK,North Macedonia,10423054.0
+GR,Greece,TR,Turkey,10423054.0
+GS,South Georgia and the South Sandwich Islands,,,397628.0
+GT,Guatemala,BZ,Belize,17915568.0
+GT,Guatemala,SV,El Salvador,17915568.0
+GT,Guatemala,HN,Honduras,17915568.0
+GT,Guatemala,MX,Mexico,17915568.0
+GU,Guam,,,168775.0
+GW,Guinea-Bissau,GN,Guinea,1968001.0
+GW,Guinea-Bissau,SN,Senegal,1968001.0
+GY,Guyana,BR,Brazil,786552.0
+GY,Guyana,SR,Suriname,786552.0
+GY,Guyana,VE,Venezuela (Bolivarian Republic of),786552.0
+HK,Hong Kong,CN,China,7496981.0
+HM,Heard Island and McDonald Islands,,,397628.0
+HN,Honduras,SV,El Salvador,9904607.0
+HN,Honduras,GT,Guatemala,9904607.0
+HN,Honduras,NI,Nicaragua,9904607.0
+HR,Croatia,BA,Bosnia and Herzegovina,4105267.0
+HR,Croatia,HU,Hungary,4105267.0
+HR,Croatia,ME,Montenegro,4105267.0
+HR,Croatia,RS,Serbia,4105267.0
+HR,Croatia,SI,Slovenia,4105267.0
+HT,Haiti,DO,Dominican Republic,11402528.0
+HU,Hungary,AT,Austria,9660351.0
+HU,Hungary,HR,Croatia,9660351.0
+HU,Hungary,RO,Romania,9660351.0
+HU,Hungary,RS,Serbia,9660351.0
+HU,Hungary,SK,Slovakia,9660351.0
+HU,Hungary,SI,Slovenia,9660351.0
+HU,Hungary,UA,Ukraine,9660351.0
+ID,Indonesia,MY,Malaysia,273523615.0
+ID,Indonesia,PG,Papua New Guinea,273523615.0
+ID,Indonesia,TL,Timor-Leste,273523615.0
+IE,Ireland,GB,United Kingdom of Great Britain and Northern Ireland,4937786.0
+IL,Israel,EG,Egypt,8655535.0
+IL,Israel,JO,Jordan,8655535.0
+IL,Israel,LB,Lebanon,8655535.0
+IL,Israel,PS,"Palestine, State of",8655535.0
+IL,Israel,SY,Syrian Arab Republic,8655535.0
+IM,Isle of Man,,,397628.0
+IN,India,BD,Bangladesh,1380004385.0
+IN,India,BT,Bhutan,1380004385.0
+IN,India,CN,China,1380004385.0
+IN,India,MM,Myanmar,1380004385.0
+IN,India,NP,Nepal,1380004385.0
+IN,India,PK,Pakistan,1380004385.0
+IO,British Indian Ocean Territory,,,397628.0
+IQ,Iraq,IR,Iran (Islamic Republic of),40222493.0
+IQ,Iraq,JO,Jordan,40222493.0
+IQ,Iraq,KW,Kuwait,40222493.0
+IQ,Iraq,SA,Saudi Arabia,40222493.0
+IQ,Iraq,SY,Syrian Arab Republic,40222493.0
+IQ,Iraq,TR,Turkey,40222493.0
+IR,Iran (Islamic Republic of),AF,Afghanistan,397628.0
+IR,Iran (Islamic Republic of),AM,Armenia,397628.0
+IR,Iran (Islamic Republic of),AZ,Azerbaijan,397628.0
+IR,Iran (Islamic Republic of),IQ,Iraq,397628.0
+IR,Iran (Islamic Republic of),PK,Pakistan,397628.0
+IR,Iran (Islamic Republic of),TR,Turkey,397628.0
+IR,Iran (Islamic Republic of),TM,Turkmenistan,397628.0
+IS,Iceland,,,341243.0
+IT,Italy,AT,Austria,60461826.0
+IT,Italy,FR,France,60461826.0
+IT,Italy,SM,San Marino,60461826.0
+IT,Italy,SI,Slovenia,60461826.0
+IT,Italy,CH,Switzerland,60461826.0
+IT,Italy,VA,Holy See,60461826.0
+JE,Jersey,,,397628.0
+JM,Jamaica,,,2961167.0
+JO,Jordan,IQ,Iraq,10203134.0
+JO,Jordan,IL,Israel,10203134.0
+JO,Jordan,PS,"Palestine, State of",10203134.0
+JO,Jordan,SA,Saudi Arabia,10203134.0
+JO,Jordan,SY,Syrian Arab Republic,10203134.0
+JP,Japan,,,126476461.0
+KE,Kenya,ET,Ethiopia,53771296.0
+KE,Kenya,SO,Somalia,53771296.0
+KE,Kenya,SS,South Sudan,53771296.0
+KE,Kenya,TZ,Tanzania (the United Republic of),53771296.0
+KE,Kenya,UG,Uganda,53771296.0
+KG,Kyrgyzstan,CN,China,6524195.0
+KG,Kyrgyzstan,KZ,Kazakhstan,6524195.0
+KG,Kyrgyzstan,TJ,Tajikistan,6524195.0
+KG,Kyrgyzstan,UZ,Uzbekistan,6524195.0
+KH,Cambodia,LA,Lao People's Democratic Republic,16718965.0
+KH,Cambodia,TH,Thailand,16718965.0
+KH,Cambodia,VN,Viet Nam,16718965.0
+KI,Kiribati,,,119449.0
+KM,Comoros,,,869601.0
+KN,Saint Kitts and Nevis,,,397628.0
+KP,Korea (Democratic People's Republic of),CN,China,397628.0
+KP,Korea (Democratic People's Republic of),KR,Korea (the Republic of),397628.0
+KP,Korea (Democratic People's Republic of),RU,Russian Federation,397628.0
+KR,Korea (the Republic of),KP,Korea (Democratic People's Republic of),397628.0
+KW,Kuwait,IQ,Iraq,4270571.0
+KW,Kuwait,SA,Saudi Arabia,4270571.0
+KY,Cayman Islands,,,397628.0
+KZ,Kazakhstan,CN,China,18776707.0
+KZ,Kazakhstan,KG,Kyrgyzstan,18776707.0
+KZ,Kazakhstan,RU,Russian Federation,18776707.0
+KZ,Kazakhstan,TM,Turkmenistan,18776707.0
+KZ,Kazakhstan,UZ,Uzbekistan,18776707.0
+LA,Lao People's Democratic Republic,CN,China,397628.0
+LA,Lao People's Democratic Republic,KH,Cambodia,397628.0
+LA,Lao People's Democratic Republic,MM,Myanmar,397628.0
+LA,Lao People's Democratic Republic,TH,Thailand,397628.0
+LA,Lao People's Democratic Republic,VN,Viet Nam,397628.0
+LB,Lebanon,IL,Israel,6825445.0
+LB,Lebanon,SY,Syrian Arab Republic,6825445.0
+LC,Saint Lucia,,,183627.0
+LI,Liechtenstein,AT,Austria,397628.0
+LI,Liechtenstein,CH,Switzerland,397628.0
+LK,Sri Lanka,,,21413249.0
+LR,Liberia,CI,Cote d’Ivoire,5057681.0
+LR,Liberia,GN,Guinea,5057681.0
+LR,Liberia,SL,Sierra Leone,5057681.0
+LS,Lesotho,ZA,South Africa,2142249.0
+LT,Lithuania,BY,Belarus,2722289.0
+LT,Lithuania,LV,Latvia,2722289.0
+LT,Lithuania,PL,Poland,2722289.0
+LT,Lithuania,RU,Russian Federation,2722289.0
+LU,Luxembourg,BE,Belgium,625978.0
+LU,Luxembourg,DE,Germany,625978.0
+LU,Luxembourg,FR,France,625978.0
+LV,Latvia,BY,Belarus,1886198.0
+LV,Latvia,EE,Estonia,1886198.0
+LV,Latvia,LT,Lithuania,1886198.0
+LV,Latvia,RU,Russian Federation,1886198.0
+LY,Libya,DZ,Algeria,6871292.0
+LY,Libya,TD,Chad,6871292.0
+LY,Libya,EG,Egypt,6871292.0
+LY,Libya,NE,Niger,6871292.0
+LY,Libya,SD,Sudan,6871292.0
+LY,Libya,TN,Tunisia,6871292.0
+MA,Morocco,DZ,Algeria,36910560.0
+MA,Morocco,ES,Spain,36910560.0
+MA,Morocco,EH,Western Sahara,36910560.0
+MC,Monaco,FR,France,397628.0
+MD,Moldova (the Republic of),RO,Romania,397628.0
+MD,Moldova (the Republic of),UA,Ukraine,397628.0
+ME,Montenegro,AL,Albania,628066.0
+ME,Montenegro,BA,Bosnia and Herzegovina,628066.0
+ME,Montenegro,HR,Croatia,628066.0
+ME,Montenegro,RS,Serbia,628066.0
+MF,Saint Martin (French part),SX,Sint Maarten (Dutch part),397628.0
+MG,Madagascar,,,27691018.0
+MH,Marshall Islands,,,397628.0
+MK,North Macedonia,AL,Albania,2083374.0
+MK,North Macedonia,BG,Bulgaria,2083374.0
+MK,North Macedonia,GR,Greece,2083374.0
+MK,North Macedonia,RS,Serbia,2083374.0
+ML,Mali,DZ,Algeria,20250833.0
+ML,Mali,BF,Burkina Faso,20250833.0
+ML,Mali,CI,Cote d’Ivoire,20250833.0
+ML,Mali,GN,Guinea,20250833.0
+ML,Mali,MR,Mauritania,20250833.0
+ML,Mali,NE,Niger,20250833.0
+ML,Mali,SN,Senegal,20250833.0
+MM,Myanmar,BD,Bangladesh,54409800.0
+MM,Myanmar,CN,China,54409800.0
+MM,Myanmar,IN,India,54409800.0
+MM,Myanmar,LA,Lao People's Democratic Republic,54409800.0
+MM,Myanmar,TH,Thailand,54409800.0
+MN,Mongolia,CN,China,3278290.0
+MN,Mongolia,RU,Russian Federation,3278290.0
+MO,Macao,CN,China,649335.0
+MP,Northern Mariana Islands,,,397628.0
+MQ,Martinique,,,375265.0
+MR,Mauritania,DZ,Algeria,4649658.0
+MR,Mauritania,ML,Mali,4649658.0
+MR,Mauritania,SN,Senegal,4649658.0
+MR,Mauritania,EH,Western Sahara,4649658.0
+MS,Montserrat,,,397628.0
+MT,Malta,,,441543.0
+MU,Mauritius,,,1271768.0
+MV,Maldives,,,540544.0
+MW,Malawi,MZ,Mozambique,19129952.0
+MW,Malawi,TZ,Tanzania (the United Republic of),19129952.0
+MW,Malawi,ZM,Zambia,19129952.0
+MX,Mexico,BZ,Belize,128932753.0
+MX,Mexico,GT,Guatemala,128932753.0
+MX,Mexico,US,United States of America,128932753.0
+MY,Malaysia,BN,Brunei Darussalam,32365999.0
+MY,Malaysia,ID,Indonesia,32365999.0
+MY,Malaysia,TH,Thailand,32365999.0
+MZ,Mozambique,MW,Malawi,31255435.0
+MZ,Mozambique,SZ,Eswatini,31255435.0
+MZ,Mozambique,ZA,South Africa,31255435.0
+MZ,Mozambique,TZ,Tanzania (the United Republic of),31255435.0
+MZ,Mozambique,ZM,Zambia,31255435.0
+MZ,Mozambique,ZW,Zimbabwe,31255435.0
+,Namibia,AO,Angola,2540905.0
+,Namibia,BW,Botswana,2540905.0
+,Namibia,ZA,South Africa,2540905.0
+,Namibia,ZM,Zambia,2540905.0
+NC,New Caledonia,,,285498.0
+NE,Niger,DZ,Algeria,24206644.0
+NE,Niger,BJ,Benin,24206644.0
+NE,Niger,BF,Burkina Faso,24206644.0
+NE,Niger,TD,Chad,24206644.0
+NE,Niger,LY,Libya,24206644.0
+NE,Niger,ML,Mali,24206644.0
+NE,Niger,NG,Nigeria,24206644.0
+NF,Norfolk Island,,,397628.0
+NG,Nigeria,BJ,Benin,206139589.0
+NG,Nigeria,CM,Cameroon,206139589.0
+NG,Nigeria,TD,Chad,206139589.0
+NG,Nigeria,NE,Niger,206139589.0
+NI,Nicaragua,CR,Costa Rica,6624554.0
+NI,Nicaragua,HN,Honduras,6624554.0
+NL,Netherlands,BE,Belgium,17134872.0
+NL,Netherlands,DE,Germany,17134872.0
+NO,Norway,FI,Finland,5421241.0
+NO,Norway,RU,Russian Federation,5421241.0
+NO,Norway,SE,Sweden,5421241.0
+NP,Nepal,CN,China,29136808.0
+NP,Nepal,IN,India,29136808.0
+NR,Nauru,,,397628.0
+NU,Niue,,,397628.0
+NZ,New Zealand,,,4822233.0
+OM,Oman,AE,United Arab Emirates,5106626.0
+OM,Oman,SA,Saudi Arabia,5106626.0
+OM,Oman,YE,Yemen,5106626.0
+PA,Panama,CO,Colombia,4314767.0
+PA,Panama,CR,Costa Rica,4314767.0
+PE,Peru,BO,Bolivia (Plurinational State Of),32971854.0
+PE,Peru,BR,Brazil,32971854.0
+PE,Peru,CL,Chile,32971854.0
+PE,Peru,CO,Colombia,32971854.0
+PE,Peru,EC,Ecuador,32971854.0
+PF,French Polynesia,,,280908.0
+PG,Papua New Guinea,ID,Indonesia,8947024.0
+PH,Philippines,,,109581078.0
+PK,Pakistan,AF,Afghanistan,220892340.0
+PK,Pakistan,CN,China,220892340.0
+PK,Pakistan,IN,India,220892340.0
+PK,Pakistan,IR,Iran (Islamic Republic of),220892340.0
+PL,Poland,BY,Belarus,37846611.0
+PL,Poland,CZ,Czechia,37846611.0
+PL,Poland,DE,Germany,37846611.0
+PL,Poland,LT,Lithuania,37846611.0
+PL,Poland,RU,Russian Federation,37846611.0
+PL,Poland,SK,Slovakia,37846611.0
+PL,Poland,UA,Ukraine,37846611.0
+PM,Saint Pierre and Miquelon,,,397628.0
+PN,Pitcairn,,,397628.0
+PR,Puerto Rico,,,2860853.0
+PS,"Palestine, State of",EG,Egypt,397628.0
+PS,"Palestine, State of",IL,Israel,397628.0
+PS,"Palestine, State of",JO,Jordan,397628.0
+PT,Portugal,ES,Spain,10196709.0
+PW,Palau,,,397628.0
+PY,Paraguay,AR,Argentina,7132538.0
+PY,Paraguay,BO,Bolivia (Plurinational State Of),7132538.0
+PY,Paraguay,BR,Brazil,7132538.0
+QA,Qatar,SA,Saudi Arabia,2881053.0
+RE,Reunion,,,397628.0
+RO,Romania,BG,Bulgaria,19237691.0
+RO,Romania,HU,Hungary,19237691.0
+RO,Romania,MD,Moldova (the Republic of),19237691.0
+RO,Romania,RS,Serbia,19237691.0
+RO,Romania,UA,Ukraine,19237691.0
+RS,Serbia,AL,Albania,8737371.0
+RS,Serbia,BA,Bosnia and Herzegovina,8737371.0
+RS,Serbia,BG,Bulgaria,8737371.0
+RS,Serbia,HR,Croatia,8737371.0
+RS,Serbia,HU,Hungary,8737371.0
+RS,Serbia,ME,Montenegro,8737371.0
+RS,Serbia,MK,North Macedonia,8737371.0
+RS,Serbia,RO,Romania,8737371.0
+RU,Russian Federation,AZ,Azerbaijan,397628.0
+RU,Russian Federation,BY,Belarus,397628.0
+RU,Russian Federation,CN,China,397628.0
+RU,Russian Federation,EE,Estonia,397628.0
+RU,Russian Federation,FI,Finland,397628.0
+RU,Russian Federation,GE,Georgia,397628.0
+RU,Russian Federation,KZ,Kazakhstan,397628.0
+RU,Russian Federation,KP,Korea (Democratic People's Republic of),397628.0
+RU,Russian Federation,LV,Latvia,397628.0
+RU,Russian Federation,LT,Lithuania,397628.0
+RU,Russian Federation,MN,Mongolia,397628.0
+RU,Russian Federation,NO,Norway,397628.0
+RU,Russian Federation,PL,Poland,397628.0
+RU,Russian Federation,UA,Ukraine,397628.0
+RW,Rwanda,BI,Burundi,12952218.0
+RW,Rwanda,CD,Congo (the Democratic Republic of the),12952218.0
+RW,Rwanda,TZ,Tanzania (the United Republic of),12952218.0
+RW,Rwanda,UG,Uganda,12952218.0
+SA,Saudi Arabia,IQ,Iraq,34813871.0
+SA,Saudi Arabia,JO,Jordan,34813871.0
+SA,Saudi Arabia,KW,Kuwait,34813871.0
+SA,Saudi Arabia,OM,Oman,34813871.0
+SA,Saudi Arabia,QA,Qatar,34813871.0
+SA,Saudi Arabia,AE,United Arab Emirates,34813871.0
+SA,Saudi Arabia,YE,Yemen,34813871.0
+SB,Solomon Islands,,,686884.0
+SC,Seychelles,,,98347.0
+SD,Sudan,CF,Central African Republic,43849260.0
+SD,Sudan,TD,Chad,43849260.0
+SD,Sudan,EG,Egypt,43849260.0
+SD,Sudan,ET,Ethiopia,43849260.0
+SD,Sudan,ER,Eritrea,43849260.0
+SD,Sudan,LY,Libya,43849260.0
+SD,Sudan,SS,South Sudan,43849260.0
+SE,Sweden,FI,Finland,10099265.0
+SE,Sweden,NO,Norway,10099265.0
+SG,Singapore,,,5850342.0
+SH,"Saint Helena, Ascension and Tristan da Cunha",,,397628.0
+SI,Slovenia,AT,Austria,2078938.0
+SI,Slovenia,HR,Croatia,2078938.0
+SI,Slovenia,HU,Hungary,2078938.0
+SI,Slovenia,IT,Italy,2078938.0
+SJ,Svalbard and Jan Mayen,,,397628.0
+SK,Slovakia,AT,Austria,5459642.0
+SK,Slovakia,CZ,Czechia,5459642.0
+SK,Slovakia,HU,Hungary,5459642.0
+SK,Slovakia,PL,Poland,5459642.0
+SK,Slovakia,UA,Ukraine,5459642.0
+SL,Sierra Leone,GN,Guinea,7976983.0
+SL,Sierra Leone,LR,Liberia,7976983.0
+SM,San Marino,IT,Italy,397628.0
+SN,Senegal,GM,Gambia (the),16743927.0
+SN,Senegal,GN,Guinea,16743927.0
+SN,Senegal,GW,Guinea-Bissau,16743927.0
+SN,Senegal,ML,Mali,16743927.0
+SN,Senegal,MR,Mauritania,16743927.0
+SO,Somalia,DJ,Djibouti,15893222.0
+SO,Somalia,ET,Ethiopia,15893222.0
+SO,Somalia,KE,Kenya,15893222.0
+SR,Suriname,BR,Brazil,586632.0
+SR,Suriname,GF,French Guiana,586632.0
+SR,Suriname,GY,Guyana,586632.0
+SS,South Sudan,CF,Central African Republic,11193725.0
+SS,South Sudan,CD,Congo (the Democratic Republic of the),11193725.0
+SS,South Sudan,ET,Ethiopia,11193725.0
+SS,South Sudan,KE,Kenya,11193725.0
+SS,South Sudan,SD,Sudan,11193725.0
+SS,South Sudan,UG,Uganda,11193725.0
+ST,Sao Tome and Principe,,,397628.0
+SV,El Salvador,GT,Guatemala,6486205.0
+SV,El Salvador,HN,Honduras,6486205.0
+SX,Sint Maarten (Dutch part),MF,Saint Martin (French part),397628.0
+SY,Syrian Arab Republic,IQ,Iraq,397628.0
+SY,Syrian Arab Republic,IL,Israel,397628.0
+SY,Syrian Arab Republic,JO,Jordan,397628.0
+SY,Syrian Arab Republic,LB,Lebanon,397628.0
+SY,Syrian Arab Republic,TR,Turkey,397628.0
+SZ,Eswatini,MZ,Mozambique,1160164.0
+SZ,Eswatini,ZA,South Africa,1160164.0
+TC,Turks and Caicos Islands,,,397628.0
+TD,Chad,CM,Cameroon,16425864.0
+TD,Chad,CF,Central African Republic,16425864.0
+TD,Chad,LY,Libya,16425864.0
+TD,Chad,NE,Niger,16425864.0
+TD,Chad,NG,Nigeria,16425864.0
+TD,Chad,SD,Sudan,16425864.0
+TF,French Southern Territories,,,397628.0
+TG,Togo,BJ,Benin,8278724.0
+TG,Togo,BF,Burkina Faso,8278724.0
+TG,Togo,GH,Ghana,8278724.0
+TH,Thailand,KH,Cambodia,69799978.0
+TH,Thailand,LA,Lao People's Democratic Republic,69799978.0
+TH,Thailand,MY,Malaysia,69799978.0
+TH,Thailand,MM,Myanmar,69799978.0
+TJ,Tajikistan,AF,Afghanistan,9537645.0
+TJ,Tajikistan,CN,China,9537645.0
+TJ,Tajikistan,KG,Kyrgyzstan,9537645.0
+TJ,Tajikistan,UZ,Uzbekistan,9537645.0
+TK,Tokelau,,,397628.0
+TL,Timor-Leste,ID,Indonesia,1318445.0
+TM,Turkmenistan,AF,Afghanistan,6031200.0
+TM,Turkmenistan,IR,Iran (Islamic Republic of),6031200.0
+TM,Turkmenistan,KZ,Kazakhstan,6031200.0
+TM,Turkmenistan,UZ,Uzbekistan,6031200.0
+TN,Tunisia,DZ,Algeria,11818619.0
+TN,Tunisia,LY,Libya,11818619.0
+TO,Tonga,,,105695.0
+TR,Turkey,AM,Armenia,84339067.0
+TR,Turkey,AZ,Azerbaijan,84339067.0
+TR,Turkey,BG,Bulgaria,84339067.0
+TR,Turkey,GE,Georgia,84339067.0
+TR,Turkey,GR,Greece,84339067.0
+TR,Turkey,IR,Iran (Islamic Republic of),84339067.0
+TR,Turkey,IQ,Iraq,84339067.0
+TR,Turkey,SY,Syrian Arab Republic,84339067.0
+TT,Trinidad and Tobago,,,1399488.0
+TV,Tuvalu,,,397628.0
+TW,Taiwan (Province of China),,,397628.0
+TZ,Tanzania (the United Republic of),BI,Burundi,397628.0
+TZ,Tanzania (the United Republic of),CD,Congo (the Democratic Republic of the),397628.0
+TZ,Tanzania (the United Republic of),KE,Kenya,397628.0
+TZ,Tanzania (the United Republic of),MW,Malawi,397628.0
+TZ,Tanzania (the United Republic of),MZ,Mozambique,397628.0
+TZ,Tanzania (the United Republic of),RW,Rwanda,397628.0
+TZ,Tanzania (the United Republic of),UG,Uganda,397628.0
+TZ,Tanzania (the United Republic of),ZM,Zambia,397628.0
+UA,Ukraine,BY,Belarus,43733762.0
+UA,Ukraine,HU,Hungary,43733762.0
+UA,Ukraine,MD,Moldova (the Republic of),43733762.0
+UA,Ukraine,PL,Poland,43733762.0
+UA,Ukraine,RO,Romania,43733762.0
+UA,Ukraine,RU,Russian Federation,43733762.0
+UA,Ukraine,SK,Slovakia,43733762.0
+UG,Uganda,CD,Congo (the Democratic Republic of the),45741007.0
+UG,Uganda,KE,Kenya,45741007.0
+UG,Uganda,RW,Rwanda,45741007.0
+UG,Uganda,SS,South Sudan,45741007.0
+UG,Uganda,TZ,Tanzania (the United Republic of),45741007.0
+UM,United States Minor Outlying Islands,,,397628.0
+US,United States of America,CA,Canada,397628.0
+US,United States of America,MX,Mexico,397628.0
+UY,Uruguay,AR,Argentina,3473730.0
+UY,Uruguay,BR,Brazil,3473730.0
+UZ,Uzbekistan,AF,Afghanistan,33469203.0
+UZ,Uzbekistan,KZ,Kazakhstan,33469203.0
+UZ,Uzbekistan,KG,Kyrgyzstan,33469203.0
+UZ,Uzbekistan,TJ,Tajikistan,33469203.0
+UZ,Uzbekistan,TM,Turkmenistan,33469203.0
+VA,Holy See,IT,Italy,397628.0
+VC,Saint Vincent and the Grenadines,,,397628.0
+VE,Venezuela (Bolivarian Republic of),BR,Brazil,397628.0
+VE,Venezuela (Bolivarian Republic of),CO,Colombia,397628.0
+VE,Venezuela (Bolivarian Republic of),GY,Guyana,397628.0
+VG,Virgin Islands (British),,,397628.0
+VI,Virgin Islands (U.S.),,,397628.0
+VN,Viet Nam,KH,Cambodia,397628.0
+VN,Viet Nam,CN,China,397628.0
+VN,Viet Nam,LA,Lao People's Democratic Republic,397628.0
+VU,Vanuatu,,,307145.0
+WF,Wallis and Futuna,,,397628.0
+WS,Samoa,,,198414.0
+YE,Yemen,OM,Oman,29825964.0
+YE,Yemen,SA,Saudi Arabia,29825964.0
+YT,Mayotte,,,272815.0
+ZA,South Africa,BW,Botswana,59308690.0
+ZA,South Africa,LS,Lesotho,59308690.0
+ZA,South Africa,MZ,Mozambique,59308690.0
+ZA,South Africa,,Namibia,59308690.0
+ZA,South Africa,SZ,Eswatini,59308690.0
+ZA,South Africa,ZW,Zimbabwe,59308690.0
+ZM,Zambia,AO,Angola,18383955.0
+ZM,Zambia,BW,Botswana,18383955.0
+ZM,Zambia,CD,Congo (the Democratic Republic of the),18383955.0
+ZM,Zambia,MW,Malawi,18383955.0
+ZM,Zambia,MZ,Mozambique,18383955.0
+ZM,Zambia,,Namibia,18383955.0
+ZM,Zambia,TZ,Tanzania (the United Republic of),18383955.0
+ZM,Zambia,ZW,Zimbabwe,18383955.0
+ZW,Zimbabwe,BW,Botswana,14862924.0
+ZW,Zimbabwe,MZ,Mozambique,14862924.0
+ZW,Zimbabwe,ZA,South Africa,14862924.0
+ZW,Zimbabwe,ZM,Zambia,14862924.0
