@@ -1,0 +1,792 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+                <link href="lib/tom-select/tom-select.css" rel="stylesheet">
+                <script src="lib/tom-select/tom-select.complete.min.js"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 720px;
+                 background-color: #2B2E4A;
+                 border: 1px solid #2B2E4A;
+                 position: relative;
+                 float: left;
+             }
+
+             
+             #loadingBar {
+                 position:absolute;
+                 top:0px;
+                 left:0px;
+                 width: 100%;
+                 height: 720px;
+                 background-color:#2B2E4A;
+                 -webkit-transition: all 0.5s ease;
+                 -moz-transition: all 0.5s ease;
+                 -ms-transition: all 0.5s ease;
+                 -o-transition: all 0.5s ease;
+                 transition: all 0.5s ease;
+                 opacity:1;
+             }
+
+             #bar {
+                 position:absolute;
+                 top:0px;
+                 left:0px;
+                 width:20px;
+                 height:20px;
+                 margin:auto auto auto auto;
+                 border-radius:11px;
+                 border:2px solid rgba(30,30,30,0.05);
+                 background: rgb(0, 173, 246); /* Old browsers */
+                 box-shadow: 2px 0px 4px rgba(0,0,0,0.4);
+             }
+
+             #border {
+                 position:absolute;
+                 top:10px;
+                 left:10px;
+                 width:500px;
+                 height:23px;
+                 margin:auto auto auto auto;
+                 box-shadow: 0px 0px 4px rgba(0,0,0,0.2);
+                 border-radius:10px;
+             }
+
+             #text {
+                 position:absolute;
+                 top:8px;
+                 left:530px;
+                 width:30px;
+                 height:50px;
+                 margin:auto auto auto auto;
+                 font-size:22px;
+                 color: #000000;
+             }
+
+             div.outerBorder {
+                 position:relative;
+                 top:400px;
+                 width:600px;
+                 height:44px;
+                 margin:auto auto auto auto;
+                 border:8px solid rgba(0,0,0,0.1);
+                 background: rgb(252,252,252); /* Old browsers */
+                 background: -moz-linear-gradient(top,  rgba(252,252,252,1) 0%, rgba(237,237,237,1) 100%); /* FF3.6+ */
+                 background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(252,252,252,1)), color-stop(100%,rgba(237,237,237,1))); /* Chrome,Safari4+ */
+                 background: -webkit-linear-gradient(top,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* Chrome10+,Safari5.1+ */
+                 background: -o-linear-gradient(top,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* Opera 11.10+ */
+                 background: -ms-linear-gradient(top,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* IE10+ */
+                 background: linear-gradient(to bottom,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* W3C */
+                 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfcfc', endColorstr='#ededed',GradientType=0 ); /* IE6-9 */
+                 border-radius:72px;
+                 box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+             }
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body style="background-color: #2B2E4A;">
+        <div class="card" style="width: 100%; background-color: #2B2E4A;">
+            
+                <div id="select-menu" class="card-header" style="background-color: #2B2E4A;">
+                    <div class="row no-gutters">
+                        <div class="col-10 pb-2">
+                            <select
+                            class="form-select"
+                            aria-label="Default select example"
+                            onchange="selectNode([value]);"
+                            id="select-node"
+                            placeholder="Select Country..." style="background-color: #2B2E4A;"
+                            >
+                                <option selected></option>
+                                
+                                    <option value="Andorra">Andorra</option>
+                                
+                                    <option value="United Arab Emirates">United Arab Emirates</option>
+                                
+                                    <option value="Afghanistan">Afghanistan</option>
+                                
+                                    <option value="Antigua and Barbuda">Antigua and Barbuda</option>
+                                
+                                    <option value="Anguilla">Anguilla</option>
+                                
+                                    <option value="Albania">Albania</option>
+                                
+                                    <option value="Armenia">Armenia</option>
+                                
+                                    <option value="Angola">Angola</option>
+                                
+                                    <option value="Antarctica">Antarctica</option>
+                                
+                                    <option value="Argentina">Argentina</option>
+                                
+                                    <option value="American Samoa">American Samoa</option>
+                                
+                                    <option value="Austria">Austria</option>
+                                
+                                    <option value="Australia">Australia</option>
+                                
+                                    <option value="Aruba">Aruba</option>
+                                
+                                    <option value="Aland Islands">Aland Islands</option>
+                                
+                                    <option value="Azerbaijan">Azerbaijan</option>
+                                
+                                    <option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
+                                
+                                    <option value="Barbados">Barbados</option>
+                                
+                                    <option value="Bangladesh">Bangladesh</option>
+                                
+                                    <option value="Belgium">Belgium</option>
+                                
+                                    <option value="Burkina Faso">Burkina Faso</option>
+                                
+                                    <option value="Bulgaria">Bulgaria</option>
+                                
+                                    <option value="Bahrain">Bahrain</option>
+                                
+                                    <option value="Burundi">Burundi</option>
+                                
+                                    <option value="Benin">Benin</option>
+                                
+                                    <option value="Saint Barthelemy">Saint Barthelemy</option>
+                                
+                                    <option value="Bermuda">Bermuda</option>
+                                
+                                    <option value="Brunei Darussalam">Brunei Darussalam</option>
+                                
+                                    <option value="Bolivia (Plurinational State Of)">Bolivia (Plurinational State Of)</option>
+                                
+                                    <option value="Bonaire, Sint Eustatius and Saba">Bonaire, Sint Eustatius and Saba</option>
+                                
+                                    <option value="Brazil">Brazil</option>
+                                
+                                    <option value="Bahamas">Bahamas</option>
+                                
+                                    <option value="Bhutan">Bhutan</option>
+                                
+                                    <option value="Bouvet Island">Bouvet Island</option>
+                                
+                                    <option value="Botswana">Botswana</option>
+                                
+                                    <option value="Belarus">Belarus</option>
+                                
+                                    <option value="Belize">Belize</option>
+                                
+                                    <option value="Canada">Canada</option>
+                                
+                                    <option value="Cocos (Keeling) Islands">Cocos (Keeling) Islands</option>
+                                
+                                    <option value="Congo (the Democratic Republic of the)">Congo (the Democratic Republic of the)</option>
+                                
+                                    <option value="Central African Republic">Central African Republic</option>
+                                
+                                    <option value="Congo">Congo</option>
+                                
+                                    <option value="Switzerland">Switzerland</option>
+                                
+                                    <option value="Cote d�Ivoire">Cote d�Ivoire</option>
+                                
+                                    <option value="Cook Islands">Cook Islands</option>
+                                
+                                    <option value="Chile">Chile</option>
+                                
+                                    <option value="Cameroon">Cameroon</option>
+                                
+                                    <option value="China">China</option>
+                                
+                                    <option value="Colombia">Colombia</option>
+                                
+                                    <option value="Costa Rica">Costa Rica</option>
+                                
+                                    <option value="Cuba">Cuba</option>
+                                
+                                    <option value="Cabo Verde">Cabo Verde</option>
+                                
+                                    <option value="Curacao">Curacao</option>
+                                
+                                    <option value="Christmas Island">Christmas Island</option>
+                                
+                                    <option value="Cyprus">Cyprus</option>
+                                
+                                    <option value="Czechia">Czechia</option>
+                                
+                                    <option value="Germany">Germany</option>
+                                
+                                    <option value="Djibouti">Djibouti</option>
+                                
+                                    <option value="Denmark">Denmark</option>
+                                
+                                    <option value="Dominica">Dominica</option>
+                                
+                                    <option value="Dominican Republic">Dominican Republic</option>
+                                
+                                    <option value="Algeria">Algeria</option>
+                                
+                                    <option value="Ecuador">Ecuador</option>
+                                
+                                    <option value="Estonia">Estonia</option>
+                                
+                                    <option value="Egypt">Egypt</option>
+                                
+                                    <option value="Western Sahara">Western Sahara</option>
+                                
+                                    <option value="Eritrea">Eritrea</option>
+                                
+                                    <option value="Spain">Spain</option>
+                                
+                                    <option value="Ethiopia">Ethiopia</option>
+                                
+                                    <option value="Finland">Finland</option>
+                                
+                                    <option value="Fiji">Fiji</option>
+                                
+                                    <option value="Falkland Islands (Malvinas)">Falkland Islands (Malvinas)</option>
+                                
+                                    <option value="Micronesia (Federated States of)">Micronesia (Federated States of)</option>
+                                
+                                    <option value="Faroe Islands">Faroe Islands</option>
+                                
+                                    <option value="France">France</option>
+                                
+                                    <option value="Gabon">Gabon</option>
+                                
+                                    <option value="United Kingdom of Great Britain and Northern Ireland">United Kingdom of Great Britain and Northern Ireland</option>
+                                
+                                    <option value="Grenada">Grenada</option>
+                                
+                                    <option value="Georgia">Georgia</option>
+                                
+                                    <option value="French Guiana">French Guiana</option>
+                                
+                                    <option value="Guernsey">Guernsey</option>
+                                
+                                    <option value="Ghana">Ghana</option>
+                                
+                                    <option value="Gibraltar">Gibraltar</option>
+                                
+                                    <option value="Greenland">Greenland</option>
+                                
+                                    <option value="Gambia (the)">Gambia (the)</option>
+                                
+                                    <option value="Guinea">Guinea</option>
+                                
+                                    <option value="Guadeloupe">Guadeloupe</option>
+                                
+                                    <option value="Equatorial Guinea">Equatorial Guinea</option>
+                                
+                                    <option value="Greece">Greece</option>
+                                
+                                    <option value="South Georgia and the South Sandwich Islands">South Georgia and the South Sandwich Islands</option>
+                                
+                                    <option value="Guatemala">Guatemala</option>
+                                
+                                    <option value="Guam">Guam</option>
+                                
+                                    <option value="Guinea-Bissau">Guinea-Bissau</option>
+                                
+                                    <option value="Guyana">Guyana</option>
+                                
+                                    <option value="Hong Kong">Hong Kong</option>
+                                
+                                    <option value="Heard Island and McDonald Islands">Heard Island and McDonald Islands</option>
+                                
+                                    <option value="Honduras">Honduras</option>
+                                
+                                    <option value="Croatia">Croatia</option>
+                                
+                                    <option value="Haiti">Haiti</option>
+                                
+                                    <option value="Hungary">Hungary</option>
+                                
+                                    <option value="Indonesia">Indonesia</option>
+                                
+                                    <option value="Ireland">Ireland</option>
+                                
+                                    <option value="Israel">Israel</option>
+                                
+                                    <option value="Isle of Man">Isle of Man</option>
+                                
+                                    <option value="India">India</option>
+                                
+                                    <option value="British Indian Ocean Territory">British Indian Ocean Territory</option>
+                                
+                                    <option value="Iraq">Iraq</option>
+                                
+                                    <option value="Iran (Islamic Republic of)">Iran (Islamic Republic of)</option>
+                                
+                                    <option value="Iceland">Iceland</option>
+                                
+                                    <option value="Italy">Italy</option>
+                                
+                                    <option value="Jersey">Jersey</option>
+                                
+                                    <option value="Jamaica">Jamaica</option>
+                                
+                                    <option value="Jordan">Jordan</option>
+                                
+                                    <option value="Japan">Japan</option>
+                                
+                                    <option value="Kenya">Kenya</option>
+                                
+                                    <option value="Kyrgyzstan">Kyrgyzstan</option>
+                                
+                                    <option value="Cambodia">Cambodia</option>
+                                
+                                    <option value="Kiribati">Kiribati</option>
+                                
+                                    <option value="Comoros">Comoros</option>
+                                
+                                    <option value="Saint Kitts and Nevis">Saint Kitts and Nevis</option>
+                                
+                                    <option value="Korea (Democratic People's Republic of)">Korea (Democratic People's Republic of)</option>
+                                
+                                    <option value="Korea (the Republic of)">Korea (the Republic of)</option>
+                                
+                                    <option value="Kuwait">Kuwait</option>
+                                
+                                    <option value="Cayman Islands">Cayman Islands</option>
+                                
+                                    <option value="Kazakhstan">Kazakhstan</option>
+                                
+                                    <option value="Lao People's Democratic Republic">Lao People's Democratic Republic</option>
+                                
+                                    <option value="Lebanon">Lebanon</option>
+                                
+                                    <option value="Saint Lucia">Saint Lucia</option>
+                                
+                                    <option value="Liechtenstein">Liechtenstein</option>
+                                
+                                    <option value="Sri Lanka">Sri Lanka</option>
+                                
+                                    <option value="Liberia">Liberia</option>
+                                
+                                    <option value="Lesotho">Lesotho</option>
+                                
+                                    <option value="Lithuania">Lithuania</option>
+                                
+                                    <option value="Luxembourg">Luxembourg</option>
+                                
+                                    <option value="Latvia">Latvia</option>
+                                
+                                    <option value="Libya">Libya</option>
+                                
+                                    <option value="Morocco">Morocco</option>
+                                
+                                    <option value="Monaco">Monaco</option>
+                                
+                                    <option value="Moldova (the Republic of)">Moldova (the Republic of)</option>
+                                
+                                    <option value="Montenegro">Montenegro</option>
+                                
+                                    <option value="Saint Martin (French part)">Saint Martin (French part)</option>
+                                
+                                    <option value="Madagascar">Madagascar</option>
+                                
+                                    <option value="Marshall Islands">Marshall Islands</option>
+                                
+                                    <option value="North Macedonia">North Macedonia</option>
+                                
+                                    <option value="Mali">Mali</option>
+                                
+                                    <option value="Myanmar">Myanmar</option>
+                                
+                                    <option value="Mongolia">Mongolia</option>
+                                
+                                    <option value="Macao">Macao</option>
+                                
+                                    <option value="Northern Mariana Islands">Northern Mariana Islands</option>
+                                
+                                    <option value="Martinique">Martinique</option>
+                                
+                                    <option value="Mauritania">Mauritania</option>
+                                
+                                    <option value="Montserrat">Montserrat</option>
+                                
+                                    <option value="Malta">Malta</option>
+                                
+                                    <option value="Mauritius">Mauritius</option>
+                                
+                                    <option value="Maldives">Maldives</option>
+                                
+                                    <option value="Malawi">Malawi</option>
+                                
+                                    <option value="Mexico">Mexico</option>
+                                
+                                    <option value="Malaysia">Malaysia</option>
+                                
+                                    <option value="Mozambique">Mozambique</option>
+                                
+                                    <option value="Namibia">Namibia</option>
+                                
+                                    <option value="New Caledonia">New Caledonia</option>
+                                
+                                    <option value="Niger">Niger</option>
+                                
+                                    <option value="Norfolk Island">Norfolk Island</option>
+                                
+                                    <option value="Nigeria">Nigeria</option>
+                                
+                                    <option value="Nicaragua">Nicaragua</option>
+                                
+                                    <option value="Netherlands">Netherlands</option>
+                                
+                                    <option value="Norway">Norway</option>
+                                
+                                    <option value="Nepal">Nepal</option>
+                                
+                                    <option value="Nauru">Nauru</option>
+                                
+                                    <option value="Niue">Niue</option>
+                                
+                                    <option value="New Zealand">New Zealand</option>
+                                
+                                    <option value="Oman">Oman</option>
+                                
+                                    <option value="Panama">Panama</option>
+                                
+                                    <option value="Peru">Peru</option>
+                                
+                                    <option value="French Polynesia">French Polynesia</option>
+                                
+                                    <option value="Papua New Guinea">Papua New Guinea</option>
+                                
+                                    <option value="Philippines">Philippines</option>
+                                
+                                    <option value="Pakistan">Pakistan</option>
+                                
+                                    <option value="Poland">Poland</option>
+                                
+                                    <option value="Saint Pierre and Miquelon">Saint Pierre and Miquelon</option>
+                                
+                                    <option value="Pitcairn">Pitcairn</option>
+                                
+                                    <option value="Puerto Rico">Puerto Rico</option>
+                                
+                                    <option value="Palestine, State of">Palestine, State of</option>
+                                
+                                    <option value="Portugal">Portugal</option>
+                                
+                                    <option value="Palau">Palau</option>
+                                
+                                    <option value="Paraguay">Paraguay</option>
+                                
+                                    <option value="Qatar">Qatar</option>
+                                
+                                    <option value="Reunion">Reunion</option>
+                                
+                                    <option value="Romania">Romania</option>
+                                
+                                    <option value="Serbia">Serbia</option>
+                                
+                                    <option value="Russian Federation">Russian Federation</option>
+                                
+                                    <option value="Rwanda">Rwanda</option>
+                                
+                                    <option value="Saudi Arabia">Saudi Arabia</option>
+                                
+                                    <option value="Solomon Islands">Solomon Islands</option>
+                                
+                                    <option value="Seychelles">Seychelles</option>
+                                
+                                    <option value="Sudan">Sudan</option>
+                                
+                                    <option value="Sweden">Sweden</option>
+                                
+                                    <option value="Singapore">Singapore</option>
+                                
+                                    <option value="Saint Helena, Ascension and Tristan da Cunha">Saint Helena, Ascension and Tristan da Cunha</option>
+                                
+                                    <option value="Slovenia">Slovenia</option>
+                                
+                                    <option value="Svalbard and Jan Mayen">Svalbard and Jan Mayen</option>
+                                
+                                    <option value="Slovakia">Slovakia</option>
+                                
+                                    <option value="Sierra Leone">Sierra Leone</option>
+                                
+                                    <option value="San Marino">San Marino</option>
+                                
+                                    <option value="Senegal">Senegal</option>
+                                
+                                    <option value="Somalia">Somalia</option>
+                                
+                                    <option value="Suriname">Suriname</option>
+                                
+                                    <option value="South Sudan">South Sudan</option>
+                                
+                                    <option value="Sao Tome and Principe">Sao Tome and Principe</option>
+                                
+                                    <option value="El Salvador">El Salvador</option>
+                                
+                                    <option value="Sint Maarten (Dutch part)">Sint Maarten (Dutch part)</option>
+                                
+                                    <option value="Syrian Arab Republic">Syrian Arab Republic</option>
+                                
+                                    <option value="Eswatini">Eswatini</option>
+                                
+                                    <option value="Turks and Caicos Islands">Turks and Caicos Islands</option>
+                                
+                                    <option value="Chad">Chad</option>
+                                
+                                    <option value="French Southern Territories">French Southern Territories</option>
+                                
+                                    <option value="Togo">Togo</option>
+                                
+                                    <option value="Thailand">Thailand</option>
+                                
+                                    <option value="Tajikistan">Tajikistan</option>
+                                
+                                    <option value="Tokelau">Tokelau</option>
+                                
+                                    <option value="Timor-Leste">Timor-Leste</option>
+                                
+                                    <option value="Turkmenistan">Turkmenistan</option>
+                                
+                                    <option value="Tunisia">Tunisia</option>
+                                
+                                    <option value="Tonga">Tonga</option>
+                                
+                                    <option value="Turkey">Turkey</option>
+                                
+                                    <option value="Trinidad and Tobago">Trinidad and Tobago</option>
+                                
+                                    <option value="Tuvalu">Tuvalu</option>
+                                
+                                    <option value="Taiwan (Province of China)">Taiwan (Province of China)</option>
+                                
+                                    <option value="Tanzania (the United Republic of)">Tanzania (the United Republic of)</option>
+                                
+                                    <option value="Ukraine">Ukraine</option>
+                                
+                                    <option value="Uganda">Uganda</option>
+                                
+                                    <option value="United States Minor Outlying Islands">United States Minor Outlying Islands</option>
+                                
+                                    <option value="United States of America">United States of America</option>
+                                
+                                    <option value="Uruguay">Uruguay</option>
+                                
+                                    <option value="Uzbekistan">Uzbekistan</option>
+                                
+                                    <option value="Holy See">Holy See</option>
+                                
+                                    <option value="Saint Vincent and the Grenadines">Saint Vincent and the Grenadines</option>
+                                
+                                    <option value="Venezuela (Bolivarian Republic of)">Venezuela (Bolivarian Republic of)</option>
+                                
+                                    <option value="Virgin Islands (British)">Virgin Islands (British)</option>
+                                
+                                    <option value="Virgin Islands (U.S.)">Virgin Islands (U.S.)</option>
+                                
+                                    <option value="Viet Nam">Viet Nam</option>
+                                
+                                    <option value="Vanuatu">Vanuatu</option>
+                                
+                                    <option value="Wallis and Futuna">Wallis and Futuna</option>
+                                
+                                    <option value="Samoa">Samoa</option>
+                                
+                                    <option value="Yemen">Yemen</option>
+                                
+                                    <option value="Mayotte">Mayotte</option>
+                                
+                                    <option value="South Africa">South Africa</option>
+                                
+                                    <option value="Zambia">Zambia</option>
+                                
+                                    <option value="Zimbabwe">Zimbabwe</option>
+                                
+                            </select>
+                        </div>
+                        <div class="col-2 pb-2">
+                            <button type="button" class="btn btn-primary btn-block" onclick="neighbourhoodHighlight({nodes: []});">Reset Selection</button>
+                        </div>
+                    </div>
+                </div>
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+            <div id="loadingBar">
+              <div class="outerBorder">
+                <div id="text">0%</div>
+                <div id="border">
+                  <div id="bar"></div>
+                </div>
+              </div>
+            </div>
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+                  new TomSelect("#select-node",{
+                      create: false,
+                      sortField: {
+                          field: "text",
+                          direction: "asc"
+                      }
+                  });
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"borderWidth": 0, "borderWidthSelected": 1, "color": "#000a96", "font": {"color": "white"}, "id": "Andorra", "label": "Andorra", "labelhighlight": "#000a96", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#2cf043", "font": {"color": "white"}, "id": "United Arab Emirates", "label": "United Arab Emirates", "labelhighlight": "#2cf043", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#e9f157", "font": {"color": "white"}, "id": "Afghanistan", "label": "Afghanistan", "labelhighlight": "#e9f157", "shape": "dot", "size": 19}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#202aa7", "font": {"color": "white"}, "id": "Antigua and Barbuda", "label": "Antigua and Barbuda", "labelhighlight": "#202aa7", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#71a4bf", "font": {"color": "white"}, "id": "Anguilla", "label": "Anguilla", "labelhighlight": "#71a4bf", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#8145c3", "font": {"color": "white"}, "id": "Albania", "label": "Albania", "labelhighlight": "#8145c3", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#2c8a38", "font": {"color": "white"}, "id": "Armenia", "label": "Armenia", "labelhighlight": "#2c8a38", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#9e43be", "font": {"color": "white"}, "id": "Angola", "label": "Angola", "labelhighlight": "#9e43be", "shape": "dot", "size": 16}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#64255d", "font": {"color": "white"}, "id": "Antarctica", "label": "Antarctica", "labelhighlight": "#64255d", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 2, "color": "#e10630", "font": {"color": "white"}, "id": "Argentina", "label": "Argentina", "labelhighlight": "#e10630", "shape": "dot", "size": 22}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#d75053", "font": {"color": "white"}, "id": "American Samoa", "label": "American Samoa", "labelhighlight": "#d75053", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#6a74f3", "font": {"color": "white"}, "id": "Austria", "label": "Austria", "labelhighlight": "#6a74f3", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#b87d2c", "font": {"color": "white"}, "id": "Australia", "label": "Australia", "labelhighlight": "#b87d2c", "shape": "dot", "size": 12}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#ced3ce", "font": {"color": "white"}, "id": "Aruba", "label": "Aruba", "labelhighlight": "#ced3ce", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#dbbc1e", "font": {"color": "white"}, "id": "Aland Islands", "label": "Aland Islands", "labelhighlight": "#dbbc1e", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#3298fb", "font": {"color": "white"}, "id": "Azerbaijan", "label": "Azerbaijan", "labelhighlight": "#3298fb", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#64426c", "font": {"color": "white"}, "id": "Bosnia and Herzegovina", "label": "Bosnia and Herzegovina", "labelhighlight": "#64426c", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#0b267f", "font": {"color": "white"}, "id": "Barbados", "label": "Barbados", "labelhighlight": "#0b267f", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 8, "color": "#7690d2", "font": {"color": "white"}, "id": "Bangladesh", "label": "Bangladesh", "labelhighlight": "#7690d2", "shape": "dot", "size": 82}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#e343a8", "font": {"color": "white"}, "id": "Belgium", "label": "Belgium", "labelhighlight": "#e343a8", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#fc4aa6", "font": {"color": "white"}, "id": "Burkina Faso", "label": "Burkina Faso", "labelhighlight": "#fc4aa6", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#a54406", "font": {"color": "white"}, "id": "Bulgaria", "label": "Bulgaria", "labelhighlight": "#a54406", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#227854", "font": {"color": "white"}, "id": "Bahrain", "label": "Bahrain", "labelhighlight": "#227854", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#6cb4af", "font": {"color": "white"}, "id": "Burundi", "label": "Burundi", "labelhighlight": "#6cb4af", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#0e4174", "font": {"color": "white"}, "id": "Benin", "label": "Benin", "labelhighlight": "#0e4174", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#2bdab4", "font": {"color": "white"}, "id": "Saint Barthelemy", "label": "Saint Barthelemy", "labelhighlight": "#2bdab4", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#61075a", "font": {"color": "white"}, "id": "Bermuda", "label": "Bermuda", "labelhighlight": "#61075a", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#d91d24", "font": {"color": "white"}, "id": "Brunei Darussalam", "label": "Brunei Darussalam", "labelhighlight": "#d91d24", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#fdb456", "font": {"color": "white"}, "id": "Bolivia (Plurinational State Of)", "label": "Bolivia (Plurinational State Of)", "labelhighlight": "#fdb456", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#bf2c40", "font": {"color": "white"}, "id": "Bonaire, Sint Eustatius and Saba", "label": "Bonaire, Sint Eustatius and Saba", "labelhighlight": "#bf2c40", "shape": "dot", "size": 10}, {"borderWidth": 1, "borderWidthSelected": 10, "color": "#f6a502", "font": {"color": "white"}, "id": "Brazil", "label": "Brazil", "labelhighlight": "#f6a502", "shape": "dot", "size": 106}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#1ced29", "font": {"color": "white"}, "id": "Bahamas", "label": "Bahamas", "labelhighlight": "#1ced29", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#9c9e05", "font": {"color": "white"}, "id": "Bhutan", "label": "Bhutan", "labelhighlight": "#9c9e05", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#25c088", "font": {"color": "white"}, "id": "Bouvet Island", "label": "Bouvet Island", "labelhighlight": "#25c088", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#629705", "font": {"color": "white"}, "id": "Botswana", "label": "Botswana", "labelhighlight": "#629705", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#90dd21", "font": {"color": "white"}, "id": "Belarus", "label": "Belarus", "labelhighlight": "#90dd21", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#48819c", "font": {"color": "white"}, "id": "Belize", "label": "Belize", "labelhighlight": "#48819c", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#b3497b", "font": {"color": "white"}, "id": "Canada", "label": "Canada", "labelhighlight": "#b3497b", "shape": "dot", "size": 18}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#7f0c15", "font": {"color": "white"}, "id": "Cocos (Keeling) Islands", "label": "Cocos (Keeling) Islands", "labelhighlight": "#7f0c15", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#1961c8", "font": {"color": "white"}, "id": "Congo (the Democratic Republic of the)", "label": "Congo (the Democratic Republic of the)", "labelhighlight": "#1961c8", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#6376c3", "font": {"color": "white"}, "id": "Central African Republic", "label": "Central African Republic", "labelhighlight": "#6376c3", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#e088cb", "font": {"color": "white"}, "id": "Congo", "label": "Congo", "labelhighlight": "#e088cb", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#8a45d4", "font": {"color": "white"}, "id": "Switzerland", "label": "Switzerland", "labelhighlight": "#8a45d4", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#091588", "font": {"color": "white"}, "id": "Cote d\u2019Ivoire", "label": "Cote d\u2019Ivoire", "labelhighlight": "#091588", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#49f5ce", "font": {"color": "white"}, "id": "Cook Islands", "label": "Cook Islands", "labelhighlight": "#49f5ce", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#d0ca05", "font": {"color": "white"}, "id": "Chile", "label": "Chile", "labelhighlight": "#d0ca05", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#861142", "font": {"color": "white"}, "id": "Cameroon", "label": "Cameroon", "labelhighlight": "#861142", "shape": "dot", "size": 13}, {"borderWidth": 1, "borderWidthSelected": 18, "color": "#ff22e7", "font": {"color": "white"}, "id": "China", "label": "China", "labelhighlight": "#ff22e7", "shape": "dot", "size": 180}, {"borderWidth": 0, "borderWidthSelected": 2, "color": "#235860", "font": {"color": "white"}, "id": "Colombia", "label": "Colombia", "labelhighlight": "#235860", "shape": "dot", "size": 25}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#958857", "font": {"color": "white"}, "id": "Costa Rica", "label": "Costa Rica", "labelhighlight": "#958857", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#fbc953", "font": {"color": "white"}, "id": "Cuba", "label": "Cuba", "labelhighlight": "#fbc953", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#2208c0", "font": {"color": "white"}, "id": "Cabo Verde", "label": "Cabo Verde", "labelhighlight": "#2208c0", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#44f61e", "font": {"color": "white"}, "id": "Curacao", "label": "Curacao", "labelhighlight": "#44f61e", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#86ada4", "font": {"color": "white"}, "id": "Christmas Island", "label": "Christmas Island", "labelhighlight": "#86ada4", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#0d4955", "font": {"color": "white"}, "id": "Cyprus", "label": "Cyprus", "labelhighlight": "#0d4955", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#61d192", "font": {"color": "white"}, "id": "Czechia", "label": "Czechia", "labelhighlight": "#61d192", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 4, "color": "#d5e627", "font": {"color": "white"}, "id": "Germany", "label": "Germany", "labelhighlight": "#d5e627", "shape": "dot", "size": 42}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#a34807", "font": {"color": "white"}, "id": "Djibouti", "label": "Djibouti", "labelhighlight": "#a34807", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#4a4b4e", "font": {"color": "white"}, "id": "Denmark", "label": "Denmark", "labelhighlight": "#4a4b4e", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#aeb954", "font": {"color": "white"}, "id": "Dominica", "label": "Dominica", "labelhighlight": "#aeb954", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#177916", "font": {"color": "white"}, "id": "Dominican Republic", "label": "Dominican Republic", "labelhighlight": "#177916", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 2, "color": "#08e2be", "font": {"color": "white"}, "id": "Algeria", "label": "Algeria", "labelhighlight": "#08e2be", "shape": "dot", "size": 22}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#328274", "font": {"color": "white"}, "id": "Ecuador", "label": "Ecuador", "labelhighlight": "#328274", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#6efd95", "font": {"color": "white"}, "id": "Estonia", "label": "Estonia", "labelhighlight": "#6efd95", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 5, "color": "#bf0c56", "font": {"color": "white"}, "id": "Egypt", "label": "Egypt", "labelhighlight": "#bf0c56", "shape": "dot", "size": 51}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#71a834", "font": {"color": "white"}, "id": "Western Sahara", "label": "Western Sahara", "labelhighlight": "#71a834", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#6c01ce", "font": {"color": "white"}, "id": "Eritrea", "label": "Eritrea", "labelhighlight": "#6c01ce", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 2, "color": "#5b7d2a", "font": {"color": "white"}, "id": "Spain", "label": "Spain", "labelhighlight": "#5b7d2a", "shape": "dot", "size": 23}, {"borderWidth": 0, "borderWidthSelected": 5, "color": "#302eb2", "font": {"color": "white"}, "id": "Ethiopia", "label": "Ethiopia", "labelhighlight": "#302eb2", "shape": "dot", "size": 57}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#7dec7d", "font": {"color": "white"}, "id": "Finland", "label": "Finland", "labelhighlight": "#7dec7d", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#61201a", "font": {"color": "white"}, "id": "Fiji", "label": "Fiji", "labelhighlight": "#61201a", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#545e28", "font": {"color": "white"}, "id": "Falkland Islands (Malvinas)", "label": "Falkland Islands (Malvinas)", "labelhighlight": "#545e28", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#b03064", "font": {"color": "white"}, "id": "Micronesia (Federated States of)", "label": "Micronesia (Federated States of)", "labelhighlight": "#b03064", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#e068bd", "font": {"color": "white"}, "id": "Faroe Islands", "label": "Faroe Islands", "labelhighlight": "#e068bd", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 3, "color": "#aea142", "font": {"color": "white"}, "id": "France", "label": "France", "labelhighlight": "#aea142", "shape": "dot", "size": 32}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#b14484", "font": {"color": "white"}, "id": "Gabon", "label": "Gabon", "labelhighlight": "#b14484", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#ba6854", "font": {"color": "white"}, "id": "United Kingdom of Great Britain and Northern Ireland", "label": "United Kingdom of Great Britain and Northern Ireland", "labelhighlight": "#ba6854", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#2759e5", "font": {"color": "white"}, "id": "Grenada", "label": "Grenada", "labelhighlight": "#2759e5", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#4a4068", "font": {"color": "white"}, "id": "Georgia", "label": "Georgia", "labelhighlight": "#4a4068", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#d4025a", "font": {"color": "white"}, "id": "French Guiana", "label": "French Guiana", "labelhighlight": "#d4025a", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#52c643", "font": {"color": "white"}, "id": "Guernsey", "label": "Guernsey", "labelhighlight": "#52c643", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#52a85f", "font": {"color": "white"}, "id": "Ghana", "label": "Ghana", "labelhighlight": "#52a85f", "shape": "dot", "size": 15}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#c7f2ae", "font": {"color": "white"}, "id": "Gibraltar", "label": "Gibraltar", "labelhighlight": "#c7f2ae", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#9cd1fd", "font": {"color": "white"}, "id": "Greenland", "label": "Greenland", "labelhighlight": "#9cd1fd", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#c05d84", "font": {"color": "white"}, "id": "Gambia (the)", "label": "Gambia (the)", "labelhighlight": "#c05d84", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#be989f", "font": {"color": "white"}, "id": "Guinea", "label": "Guinea", "labelhighlight": "#be989f", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#35c7fa", "font": {"color": "white"}, "id": "Guadeloupe", "label": "Guadeloupe", "labelhighlight": "#35c7fa", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#a68169", "font": {"color": "white"}, "id": "Equatorial Guinea", "label": "Equatorial Guinea", "labelhighlight": "#a68169", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#40ddcf", "font": {"color": "white"}, "id": "Greece", "label": "Greece", "labelhighlight": "#40ddcf", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#d5be51", "font": {"color": "white"}, "id": "South Georgia and the South Sandwich Islands", "label": "South Georgia and the South Sandwich Islands", "labelhighlight": "#d5be51", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#b04ae8", "font": {"color": "white"}, "id": "Guatemala", "label": "Guatemala", "labelhighlight": "#b04ae8", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#0118c8", "font": {"color": "white"}, "id": "Guam", "label": "Guam", "labelhighlight": "#0118c8", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#59bcd3", "font": {"color": "white"}, "id": "Guinea-Bissau", "label": "Guinea-Bissau", "labelhighlight": "#59bcd3", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#3c6fe0", "font": {"color": "white"}, "id": "Guyana", "label": "Guyana", "labelhighlight": "#3c6fe0", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#4f0911", "font": {"color": "white"}, "id": "Hong Kong", "label": "Hong Kong", "labelhighlight": "#4f0911", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#4a2efb", "font": {"color": "white"}, "id": "Heard Island and McDonald Islands", "label": "Heard Island and McDonald Islands", "labelhighlight": "#4a2efb", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#c2f38a", "font": {"color": "white"}, "id": "Honduras", "label": "Honduras", "labelhighlight": "#c2f38a", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#bcabfd", "font": {"color": "white"}, "id": "Croatia", "label": "Croatia", "labelhighlight": "#bcabfd", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#a99775", "font": {"color": "white"}, "id": "Haiti", "label": "Haiti", "labelhighlight": "#a99775", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#bda3ba", "font": {"color": "white"}, "id": "Hungary", "label": "Hungary", "labelhighlight": "#bda3ba", "shape": "dot", "size": 10}, {"borderWidth": 1, "borderWidthSelected": 13, "color": "#23ea64", "font": {"color": "white"}, "id": "Indonesia", "label": "Indonesia", "labelhighlight": "#23ea64", "shape": "dot", "size": 137}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#8fc2c9", "font": {"color": "white"}, "id": "Ireland", "label": "Ireland", "labelhighlight": "#8fc2c9", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#177d81", "font": {"color": "white"}, "id": "Israel", "label": "Israel", "labelhighlight": "#177d81", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#70ff73", "font": {"color": "white"}, "id": "Isle of Man", "label": "Isle of Man", "labelhighlight": "#70ff73", "shape": "dot", "size": 10}, {"borderWidth": 1, "borderWidthSelected": 18, "color": "#3ab137", "font": {"color": "white"}, "id": "India", "label": "India", "labelhighlight": "#3ab137", "shape": "dot", "size": 180}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#7add57", "font": {"color": "white"}, "id": "British Indian Ocean Territory", "label": "British Indian Ocean Territory", "labelhighlight": "#7add57", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 2, "color": "#e06e55", "font": {"color": "white"}, "id": "Iraq", "label": "Iraq", "labelhighlight": "#e06e55", "shape": "dot", "size": 20}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#6c6670", "font": {"color": "white"}, "id": "Iran (Islamic Republic of)", "label": "Iran (Islamic Republic of)", "labelhighlight": "#6c6670", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#07c014", "font": {"color": "white"}, "id": "Iceland", "label": "Iceland", "labelhighlight": "#07c014", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 3, "color": "#2b6e25", "font": {"color": "white"}, "id": "Italy", "label": "Italy", "labelhighlight": "#2b6e25", "shape": "dot", "size": 30}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#67534c", "font": {"color": "white"}, "id": "Jersey", "label": "Jersey", "labelhighlight": "#67534c", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#516a8f", "font": {"color": "white"}, "id": "Jamaica", "label": "Jamaica", "labelhighlight": "#516a8f", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#82a407", "font": {"color": "white"}, "id": "Jordan", "label": "Jordan", "labelhighlight": "#82a407", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 6, "color": "#f81fee", "font": {"color": "white"}, "id": "Japan", "label": "Japan", "labelhighlight": "#f81fee", "shape": "dot", "size": 63}, {"borderWidth": 0, "borderWidthSelected": 2, "color": "#4307c9", "font": {"color": "white"}, "id": "Kenya", "label": "Kenya", "labelhighlight": "#4307c9", "shape": "dot", "size": 27}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#6c3299", "font": {"color": "white"}, "id": "Kyrgyzstan", "label": "Kyrgyzstan", "labelhighlight": "#6c3299", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#48bbfb", "font": {"color": "white"}, "id": "Cambodia", "label": "Cambodia", "labelhighlight": "#48bbfb", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#0814f7", "font": {"color": "white"}, "id": "Kiribati", "label": "Kiribati", "labelhighlight": "#0814f7", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#8ec5ea", "font": {"color": "white"}, "id": "Comoros", "label": "Comoros", "labelhighlight": "#8ec5ea", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#7f3bcf", "font": {"color": "white"}, "id": "Saint Kitts and Nevis", "label": "Saint Kitts and Nevis", "labelhighlight": "#7f3bcf", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#b2a363", "font": {"color": "white"}, "id": "Korea (Democratic People\u0027s Republic of)", "label": "Korea (Democratic People\u0027s Republic of)", "labelhighlight": "#b2a363", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#3b64e9", "font": {"color": "white"}, "id": "Korea (the Republic of)", "label": "Korea (the Republic of)", "labelhighlight": "#3b64e9", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#679124", "font": {"color": "white"}, "id": "Kuwait", "label": "Kuwait", "labelhighlight": "#679124", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#7b3aff", "font": {"color": "white"}, "id": "Cayman Islands", "label": "Cayman Islands", "labelhighlight": "#7b3aff", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#91ebd8", "font": {"color": "white"}, "id": "Kazakhstan", "label": "Kazakhstan", "labelhighlight": "#91ebd8", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#0c128c", "font": {"color": "white"}, "id": "Lao People\u0027s Democratic Republic", "label": "Lao People\u0027s Democratic Republic", "labelhighlight": "#0c128c", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#95b0cb", "font": {"color": "white"}, "id": "Lebanon", "label": "Lebanon", "labelhighlight": "#95b0cb", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#fe7875", "font": {"color": "white"}, "id": "Saint Lucia", "label": "Saint Lucia", "labelhighlight": "#fe7875", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#2a5a2b", "font": {"color": "white"}, "id": "Liechtenstein", "label": "Liechtenstein", "labelhighlight": "#2a5a2b", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#340972", "font": {"color": "white"}, "id": "Sri Lanka", "label": "Sri Lanka", "labelhighlight": "#340972", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#d0c09e", "font": {"color": "white"}, "id": "Liberia", "label": "Liberia", "labelhighlight": "#d0c09e", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#287efa", "font": {"color": "white"}, "id": "Lesotho", "label": "Lesotho", "labelhighlight": "#287efa", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#cc5ff9", "font": {"color": "white"}, "id": "Lithuania", "label": "Lithuania", "labelhighlight": "#cc5ff9", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#aef70e", "font": {"color": "white"}, "id": "Luxembourg", "label": "Luxembourg", "labelhighlight": "#aef70e", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#3e18ba", "font": {"color": "white"}, "id": "Latvia", "label": "Latvia", "labelhighlight": "#3e18ba", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#753c06", "font": {"color": "white"}, "id": "Libya", "label": "Libya", "labelhighlight": "#753c06", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#4ccf91", "font": {"color": "white"}, "id": "Morocco", "label": "Morocco", "labelhighlight": "#4ccf91", "shape": "dot", "size": 18}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#14e422", "font": {"color": "white"}, "id": "Monaco", "label": "Monaco", "labelhighlight": "#14e422", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#9a9b04", "font": {"color": "white"}, "id": "Moldova (the Republic of)", "label": "Moldova (the Republic of)", "labelhighlight": "#9a9b04", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#9e5c85", "font": {"color": "white"}, "id": "Montenegro", "label": "Montenegro", "labelhighlight": "#9e5c85", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#bf922a", "font": {"color": "white"}, "id": "Saint Martin (French part)", "label": "Saint Martin (French part)", "labelhighlight": "#bf922a", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#f95380", "font": {"color": "white"}, "id": "Madagascar", "label": "Madagascar", "labelhighlight": "#f95380", "shape": "dot", "size": 13}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#4a34df", "font": {"color": "white"}, "id": "Marshall Islands", "label": "Marshall Islands", "labelhighlight": "#4a34df", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#0c4efd", "font": {"color": "white"}, "id": "North Macedonia", "label": "North Macedonia", "labelhighlight": "#0c4efd", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#a563e2", "font": {"color": "white"}, "id": "Mali", "label": "Mali", "labelhighlight": "#a563e2", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 2, "color": "#f85b68", "font": {"color": "white"}, "id": "Myanmar", "label": "Myanmar", "labelhighlight": "#f85b68", "shape": "dot", "size": 27}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#3319c0", "font": {"color": "white"}, "id": "Mongolia", "label": "Mongolia", "labelhighlight": "#3319c0", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#925397", "font": {"color": "white"}, "id": "Macao", "label": "Macao", "labelhighlight": "#925397", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#b60ef8", "font": {"color": "white"}, "id": "Northern Mariana Islands", "label": "Northern Mariana Islands", "labelhighlight": "#b60ef8", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#cd9885", "font": {"color": "white"}, "id": "Martinique", "label": "Martinique", "labelhighlight": "#cd9885", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#26f758", "font": {"color": "white"}, "id": "Mauritania", "label": "Mauritania", "labelhighlight": "#26f758", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#f20839", "font": {"color": "white"}, "id": "Montserrat", "label": "Montserrat", "labelhighlight": "#f20839", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#29f319", "font": {"color": "white"}, "id": "Malta", "label": "Malta", "labelhighlight": "#29f319", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#500496", "font": {"color": "white"}, "id": "Mauritius", "label": "Mauritius", "labelhighlight": "#500496", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#91b948", "font": {"color": "white"}, "id": "Maldives", "label": "Maldives", "labelhighlight": "#91b948", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#74e096", "font": {"color": "white"}, "id": "Malawi", "label": "Malawi", "labelhighlight": "#74e096", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 6, "color": "#2d2fa5", "font": {"color": "white"}, "id": "Mexico", "label": "Mexico", "labelhighlight": "#2d2fa5", "shape": "dot", "size": 64}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#c5f6e9", "font": {"color": "white"}, "id": "Malaysia", "label": "Malaysia", "labelhighlight": "#c5f6e9", "shape": "dot", "size": 16}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#9f736e", "font": {"color": "white"}, "id": "Mozambique", "label": "Mozambique", "labelhighlight": "#9f736e", "shape": "dot", "size": 15}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#0487f5", "font": {"color": "white"}, "id": "Namibia", "label": "Namibia", "labelhighlight": "#0487f5", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#d6f815", "font": {"color": "white"}, "id": "New Caledonia", "label": "New Caledonia", "labelhighlight": "#d6f815", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#60f41f", "font": {"color": "white"}, "id": "Niger", "label": "Niger", "labelhighlight": "#60f41f", "shape": "dot", "size": 12}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#3bb962", "font": {"color": "white"}, "id": "Norfolk Island", "label": "Norfolk Island", "labelhighlight": "#3bb962", "shape": "dot", "size": 10}, {"borderWidth": 1, "borderWidthSelected": 10, "color": "#53fcf4", "font": {"color": "white"}, "id": "Nigeria", "label": "Nigeria", "labelhighlight": "#53fcf4", "shape": "dot", "size": 103}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#068f4e", "font": {"color": "white"}, "id": "Nicaragua", "label": "Nicaragua", "labelhighlight": "#068f4e", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#607eac", "font": {"color": "white"}, "id": "Netherlands", "label": "Netherlands", "labelhighlight": "#607eac", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#8210eb", "font": {"color": "white"}, "id": "Norway", "label": "Norway", "labelhighlight": "#8210eb", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#b93ec1", "font": {"color": "white"}, "id": "Nepal", "label": "Nepal", "labelhighlight": "#b93ec1", "shape": "dot", "size": 14}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#6acced", "font": {"color": "white"}, "id": "Nauru", "label": "Nauru", "labelhighlight": "#6acced", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#4894c6", "font": {"color": "white"}, "id": "Niue", "label": "Niue", "labelhighlight": "#4894c6", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#83a962", "font": {"color": "white"}, "id": "New Zealand", "label": "New Zealand", "labelhighlight": "#83a962", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#7a18d0", "font": {"color": "white"}, "id": "Oman", "label": "Oman", "labelhighlight": "#7a18d0", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#2b9b0f", "font": {"color": "white"}, "id": "Panama", "label": "Panama", "labelhighlight": "#2b9b0f", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#879448", "font": {"color": "white"}, "id": "Peru", "label": "Peru", "labelhighlight": "#879448", "shape": "dot", "size": 16}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#6fe7f3", "font": {"color": "white"}, "id": "French Polynesia", "label": "French Polynesia", "labelhighlight": "#6fe7f3", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#62b1b3", "font": {"color": "white"}, "id": "Papua New Guinea", "label": "Papua New Guinea", "labelhighlight": "#62b1b3", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 5, "color": "#742ff5", "font": {"color": "white"}, "id": "Philippines", "label": "Philippines", "labelhighlight": "#742ff5", "shape": "dot", "size": 55}, {"borderWidth": 1, "borderWidthSelected": 11, "color": "#d038d1", "font": {"color": "white"}, "id": "Pakistan", "label": "Pakistan", "labelhighlight": "#d038d1", "shape": "dot", "size": 111}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#1d83cd", "font": {"color": "white"}, "id": "Poland", "label": "Poland", "labelhighlight": "#1d83cd", "shape": "dot", "size": 19}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#8757c0", "font": {"color": "white"}, "id": "Saint Pierre and Miquelon", "label": "Saint Pierre and Miquelon", "labelhighlight": "#8757c0", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#8f8f0c", "font": {"color": "white"}, "id": "Pitcairn", "label": "Pitcairn", "labelhighlight": "#8f8f0c", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#86c971", "font": {"color": "white"}, "id": "Puerto Rico", "label": "Puerto Rico", "labelhighlight": "#86c971", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#79d3ea", "font": {"color": "white"}, "id": "Palestine, State of", "label": "Palestine, State of", "labelhighlight": "#79d3ea", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#78bb03", "font": {"color": "white"}, "id": "Portugal", "label": "Portugal", "labelhighlight": "#78bb03", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#c7b0a3", "font": {"color": "white"}, "id": "Palau", "label": "Palau", "labelhighlight": "#c7b0a3", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#5d82bd", "font": {"color": "white"}, "id": "Paraguay", "label": "Paraguay", "labelhighlight": "#5d82bd", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#5824eb", "font": {"color": "white"}, "id": "Qatar", "label": "Qatar", "labelhighlight": "#5824eb", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#4900f7", "font": {"color": "white"}, "id": "Reunion", "label": "Reunion", "labelhighlight": "#4900f7", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#45aa4e", "font": {"color": "white"}, "id": "Romania", "label": "Romania", "labelhighlight": "#45aa4e", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#959f13", "font": {"color": "white"}, "id": "Serbia", "label": "Serbia", "labelhighlight": "#959f13", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 7, "color": "#054d3e", "font": {"color": "white"}, "id": "Russian Federation", "label": "Russian Federation", "labelhighlight": "#054d3e", "shape": "dot", "size": 73}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#3d4381", "font": {"color": "white"}, "id": "Rwanda", "label": "Rwanda", "labelhighlight": "#3d4381", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#c1f239", "font": {"color": "white"}, "id": "Saudi Arabia", "label": "Saudi Arabia", "labelhighlight": "#c1f239", "shape": "dot", "size": 17}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#6ec7cb", "font": {"color": "white"}, "id": "Solomon Islands", "label": "Solomon Islands", "labelhighlight": "#6ec7cb", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#7ce419", "font": {"color": "white"}, "id": "Seychelles", "label": "Seychelles", "labelhighlight": "#7ce419", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 2, "color": "#c390f0", "font": {"color": "white"}, "id": "Sudan", "label": "Sudan", "labelhighlight": "#c390f0", "shape": "dot", "size": 22}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#743913", "font": {"color": "white"}, "id": "Sweden", "label": "Sweden", "labelhighlight": "#743913", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#df75b0", "font": {"color": "white"}, "id": "Singapore", "label": "Singapore", "labelhighlight": "#df75b0", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#827278", "font": {"color": "white"}, "id": "Saint Helena, Ascension and Tristan da Cunha", "label": "Saint Helena, Ascension and Tristan da Cunha", "labelhighlight": "#827278", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#4f5997", "font": {"color": "white"}, "id": "Slovenia", "label": "Slovenia", "labelhighlight": "#4f5997", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#d7011a", "font": {"color": "white"}, "id": "Svalbard and Jan Mayen", "label": "Svalbard and Jan Mayen", "labelhighlight": "#d7011a", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#960110", "font": {"color": "white"}, "id": "Slovakia", "label": "Slovakia", "labelhighlight": "#960110", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#364e87", "font": {"color": "white"}, "id": "Sierra Leone", "label": "Sierra Leone", "labelhighlight": "#364e87", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#38726b", "font": {"color": "white"}, "id": "San Marino", "label": "San Marino", "labelhighlight": "#38726b", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#11dbe3", "font": {"color": "white"}, "id": "Senegal", "label": "Senegal", "labelhighlight": "#11dbe3", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#46e68b", "font": {"color": "white"}, "id": "Somalia", "label": "Somalia", "labelhighlight": "#46e68b", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#0b87b9", "font": {"color": "white"}, "id": "Suriname", "label": "Suriname", "labelhighlight": "#0b87b9", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#a89559", "font": {"color": "white"}, "id": "South Sudan", "label": "South Sudan", "labelhighlight": "#a89559", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#15508d", "font": {"color": "white"}, "id": "Sao Tome and Principe", "label": "Sao Tome and Principe", "labelhighlight": "#15508d", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#c341ae", "font": {"color": "white"}, "id": "El Salvador", "label": "El Salvador", "labelhighlight": "#c341ae", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#f82904", "font": {"color": "white"}, "id": "Sint Maarten (Dutch part)", "label": "Sint Maarten (Dutch part)", "labelhighlight": "#f82904", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#2a0afa", "font": {"color": "white"}, "id": "Syrian Arab Republic", "label": "Syrian Arab Republic", "labelhighlight": "#2a0afa", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#bc3529", "font": {"color": "white"}, "id": "Eswatini", "label": "Eswatini", "labelhighlight": "#bc3529", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#515d2c", "font": {"color": "white"}, "id": "Turks and Caicos Islands", "label": "Turks and Caicos Islands", "labelhighlight": "#515d2c", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#a96615", "font": {"color": "white"}, "id": "Chad", "label": "Chad", "labelhighlight": "#a96615", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#d50925", "font": {"color": "white"}, "id": "French Southern Territories", "label": "French Southern Territories", "labelhighlight": "#d50925", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#ec4018", "font": {"color": "white"}, "id": "Togo", "label": "Togo", "labelhighlight": "#ec4018", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 3, "color": "#14a4e8", "font": {"color": "white"}, "id": "Thailand", "label": "Thailand", "labelhighlight": "#14a4e8", "shape": "dot", "size": 35}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#75e201", "font": {"color": "white"}, "id": "Tajikistan", "label": "Tajikistan", "labelhighlight": "#75e201", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#90deea", "font": {"color": "white"}, "id": "Tokelau", "label": "Tokelau", "labelhighlight": "#90deea", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#00fb1d", "font": {"color": "white"}, "id": "Timor-Leste", "label": "Timor-Leste", "labelhighlight": "#00fb1d", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#fe6a4f", "font": {"color": "white"}, "id": "Turkmenistan", "label": "Turkmenistan", "labelhighlight": "#fe6a4f", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#7ae771", "font": {"color": "white"}, "id": "Tunisia", "label": "Tunisia", "labelhighlight": "#7ae771", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#a43fc5", "font": {"color": "white"}, "id": "Tonga", "label": "Tonga", "labelhighlight": "#a43fc5", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 4, "color": "#8b98ee", "font": {"color": "white"}, "id": "Turkey", "label": "Turkey", "labelhighlight": "#8b98ee", "shape": "dot", "size": 42}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#4526aa", "font": {"color": "white"}, "id": "Trinidad and Tobago", "label": "Trinidad and Tobago", "labelhighlight": "#4526aa", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#88fd52", "font": {"color": "white"}, "id": "Tuvalu", "label": "Tuvalu", "labelhighlight": "#88fd52", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#560bb0", "font": {"color": "white"}, "id": "Taiwan (Province of China)", "label": "Taiwan (Province of China)", "labelhighlight": "#560bb0", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#619d0b", "font": {"color": "white"}, "id": "Tanzania (the United Republic of)", "label": "Tanzania (the United Republic of)", "labelhighlight": "#619d0b", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 2, "color": "#d833a0", "font": {"color": "white"}, "id": "Ukraine", "label": "Ukraine", "labelhighlight": "#d833a0", "shape": "dot", "size": 21}, {"borderWidth": 0, "borderWidthSelected": 2, "color": "#a3cef2", "font": {"color": "white"}, "id": "Uganda", "label": "Uganda", "labelhighlight": "#a3cef2", "shape": "dot", "size": 23}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#684720", "font": {"color": "white"}, "id": "United States Minor Outlying Islands", "label": "United States Minor Outlying Islands", "labelhighlight": "#684720", "shape": "dot", "size": 10}, {"borderWidth": 1, "borderWidthSelected": 16, "color": "#a10688", "font": {"color": "white"}, "id": "United States of America", "label": "United States of America", "labelhighlight": "#a10688", "shape": "dot", "size": 169}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#746421", "font": {"color": "white"}, "id": "Uruguay", "label": "Uruguay", "labelhighlight": "#746421", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#07b15f", "font": {"color": "white"}, "id": "Uzbekistan", "label": "Uzbekistan", "labelhighlight": "#07b15f", "shape": "dot", "size": 16}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#800c45", "font": {"color": "white"}, "id": "Holy See", "label": "Holy See", "labelhighlight": "#800c45", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#f89c0d", "font": {"color": "white"}, "id": "Saint Vincent and the Grenadines", "label": "Saint Vincent and the Grenadines", "labelhighlight": "#f89c0d", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#897d38", "font": {"color": "white"}, "id": "Venezuela (Bolivarian Republic of)", "label": "Venezuela (Bolivarian Republic of)", "labelhighlight": "#897d38", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#18a497", "font": {"color": "white"}, "id": "Virgin Islands (British)", "label": "Virgin Islands (British)", "labelhighlight": "#18a497", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#33dc3b", "font": {"color": "white"}, "id": "Virgin Islands (U.S.)", "label": "Virgin Islands (U.S.)", "labelhighlight": "#33dc3b", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#3fdd1f", "font": {"color": "white"}, "id": "Viet Nam", "label": "Viet Nam", "labelhighlight": "#3fdd1f", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#6e720e", "font": {"color": "white"}, "id": "Vanuatu", "label": "Vanuatu", "labelhighlight": "#6e720e", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#ab08fb", "font": {"color": "white"}, "id": "Wallis and Futuna", "label": "Wallis and Futuna", "labelhighlight": "#ab08fb", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#9a9686", "font": {"color": "white"}, "id": "Samoa", "label": "Samoa", "labelhighlight": "#9a9686", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#782f5e", "font": {"color": "white"}, "id": "Yemen", "label": "Yemen", "labelhighlight": "#782f5e", "shape": "dot", "size": 15}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#625bc5", "font": {"color": "white"}, "id": "Mayotte", "label": "Mayotte", "labelhighlight": "#625bc5", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 2, "color": "#db1c1c", "font": {"color": "white"}, "id": "South Africa", "label": "South Africa", "labelhighlight": "#db1c1c", "shape": "dot", "size": 29}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#eed183", "font": {"color": "white"}, "id": "Zambia", "label": "Zambia", "labelhighlight": "#eed183", "shape": "dot", "size": 10}, {"borderWidth": 0, "borderWidthSelected": 1, "color": "#7a3f57", "font": {"color": "white"}, "id": "Zimbabwe", "label": "Zimbabwe", "labelhighlight": "#7a3f57", "shape": "dot", "size": 10}]);
+                  edges = new vis.DataSet([{"color": "#903749", "from": "Azerbaijan", "to": "Armenia", "value": 2}, {"color": "#903749", "from": "Benin", "to": "Burkina Faso", "value": 2}, {"color": "#903749", "from": "Bolivia (Plurinational State Of)", "to": "Argentina", "value": 2}, {"color": "#903749", "from": "Brazil", "to": "Argentina", "value": 2}, {"color": "#903749", "from": "Brazil", "to": "Bolivia (Plurinational State Of)", "value": 2}, {"color": "#903749", "from": "Congo (the Democratic Republic of the)", "to": "Angola", "value": 2}, {"color": "#903749", "from": "Congo (the Democratic Republic of the)", "to": "Burundi", "value": 2}, {"color": "#903749", "from": "Central African Republic", "to": "Congo (the Democratic Republic of the)", "value": 2}, {"color": "#903749", "from": "Congo", "to": "Angola", "value": 2}, {"color": "#903749", "from": "Congo", "to": "Central African Republic", "value": 2}, {"color": "#903749", "from": "Congo", "to": "Congo (the Democratic Republic of the)", "value": 2}, {"color": "#903749", "from": "Switzerland", "to": "Austria", "value": 2}, {"color": "#903749", "from": "Cote d\u2019Ivoire", "to": "Burkina Faso", "value": 2}, {"color": "#903749", "from": "Chile", "to": "Argentina", "value": 2}, {"color": "#903749", "from": "Chile", "to": "Bolivia (Plurinational State Of)", "value": 2}, {"color": "#903749", "from": "Cameroon", "to": "Central African Republic", "value": 2}, {"color": "#903749", "from": "Cameroon", "to": "Congo", "value": 2}, {"color": "#903749", "from": "China", "to": "Afghanistan", "value": 2}, {"color": "#903749", "from": "China", "to": "Bhutan", "value": 2}, {"color": "#903749", "from": "Colombia", "to": "Brazil", "value": 2}, {"color": "#903749", "from": "Czechia", "to": "Austria", "value": 2}, {"color": "#903749", "from": "Germany", "to": "Austria", "value": 2}, {"color": "#903749", "from": "Germany", "to": "Belgium", "value": 2}, {"color": "#903749", "from": "Germany", "to": "Czechia", "value": 2}, {"color": "#903749", "from": "Germany", "to": "Switzerland", "value": 2}, {"color": "#903749", "from": "Denmark", "to": "Germany", "value": 2}, {"color": "#903749", "from": "Ecuador", "to": "Colombia", "value": 2}, {"color": "#903749", "from": "Western Sahara", "to": "Algeria", "value": 2}, {"color": "#903749", "from": "Eritrea", "to": "Djibouti", "value": 2}, {"color": "#903749", "from": "Spain", "to": "Andorra", "value": 2}, {"color": "#903749", "from": "Ethiopia", "to": "Djibouti", "value": 2}, {"color": "#903749", "from": "Ethiopia", "to": "Eritrea", "value": 2}, {"color": "#903749", "from": "France", "to": "Andorra", "value": 2}, {"color": "#903749", "from": "France", "to": "Belgium", "value": 2}, {"color": "#903749", "from": "France", "to": "Germany", "value": 2}, {"color": "#903749", "from": "France", "to": "Spain", "value": 2}, {"color": "#903749", "from": "France", "to": "Switzerland", "value": 2}, {"color": "#903749", "from": "Gabon", "to": "Cameroon", "value": 2}, {"color": "#903749", "from": "Gabon", "to": "Congo", "value": 2}, {"color": "#903749", "from": "Georgia", "to": "Armenia", "value": 2}, {"color": "#903749", "from": "Georgia", "to": "Azerbaijan", "value": 2}, {"color": "#903749", "from": "French Guiana", "to": "Brazil", "value": 2}, {"color": "#903749", "from": "Ghana", "to": "Burkina Faso", "value": 2}, {"color": "#903749", "from": "Ghana", "to": "Cote d\u2019Ivoire", "value": 2}, {"color": "#903749", "from": "Gibraltar", "to": "Spain", "value": 2}, {"color": "#903749", "from": "Guinea", "to": "Cote d\u2019Ivoire", "value": 2}, {"color": "#903749", "from": "Equatorial Guinea", "to": "Cameroon", "value": 2}, {"color": "#903749", "from": "Equatorial Guinea", "to": "Gabon", "value": 2}, {"color": "#903749", "from": "Greece", "to": "Albania", "value": 2}, {"color": "#903749", "from": "Greece", "to": "Bulgaria", "value": 2}, {"color": "#903749", "from": "Guatemala", "to": "Belize", "value": 2}, {"color": "#903749", "from": "Guinea-Bissau", "to": "Guinea", "value": 2}, {"color": "#903749", "from": "Guyana", "to": "Brazil", "value": 2}, {"color": "#903749", "from": "Hong Kong", "to": "China", "value": 2}, {"color": "#903749", "from": "Honduras", "to": "Guatemala", "value": 2}, {"color": "#903749", "from": "Croatia", "to": "Bosnia and Herzegovina", "value": 2}, {"color": "#903749", "from": "Haiti", "to": "Dominican Republic", "value": 2}, {"color": "#903749", "from": "Hungary", "to": "Austria", "value": 2}, {"color": "#903749", "from": "Hungary", "to": "Croatia", "value": 2}, {"color": "#903749", "from": "Ireland", "to": "United Kingdom of Great Britain and Northern Ireland", "value": 2}, {"color": "#903749", "from": "Israel", "to": "Egypt", "value": 2}, {"color": "#903749", "from": "India", "to": "Bangladesh", "value": 2}, {"color": "#903749", "from": "India", "to": "Bhutan", "value": 2}, {"color": "#903749", "from": "India", "to": "China", "value": 2}, {"color": "#903749", "from": "Iran (Islamic Republic of)", "to": "Afghanistan", "value": 2}, {"color": "#903749", "from": "Iran (Islamic Republic of)", "to": "Armenia", "value": 2}, {"color": "#903749", "from": "Iran (Islamic Republic of)", "to": "Azerbaijan", "value": 2}, {"color": "#903749", "from": "Iran (Islamic Republic of)", "to": "Iraq", "value": 2}, {"color": "#903749", "from": "Italy", "to": "Austria", "value": 2}, {"color": "#903749", "from": "Italy", "to": "France", "value": 2}, {"color": "#903749", "from": "Italy", "to": "Switzerland", "value": 2}, {"color": "#903749", "from": "Jordan", "to": "Iraq", "value": 2}, {"color": "#903749", "from": "Jordan", "to": "Israel", "value": 2}, {"color": "#903749", "from": "Kenya", "to": "Ethiopia", "value": 2}, {"color": "#903749", "from": "Kyrgyzstan", "to": "China", "value": 2}, {"color": "#903749", "from": "Korea (Democratic People\u0027s Republic of)", "to": "China", "value": 2}, {"color": "#903749", "from": "Korea (the Republic of)", "to": "Korea (Democratic People\u0027s Republic of)", "value": 2}, {"color": "#903749", "from": "Kuwait", "to": "Iraq", "value": 2}, {"color": "#903749", "from": "Kazakhstan", "to": "China", "value": 2}, {"color": "#903749", "from": "Kazakhstan", "to": "Kyrgyzstan", "value": 2}, {"color": "#903749", "from": "Lao People\u0027s Democratic Republic", "to": "China", "value": 2}, {"color": "#903749", "from": "Lao People\u0027s Democratic Republic", "to": "Cambodia", "value": 2}, {"color": "#903749", "from": "Lebanon", "to": "Israel", "value": 2}, {"color": "#903749", "from": "Liechtenstein", "to": "Austria", "value": 2}, {"color": "#903749", "from": "Liechtenstein", "to": "Switzerland", "value": 2}, {"color": "#903749", "from": "Liberia", "to": "Cote d\u2019Ivoire", "value": 2}, {"color": "#903749", "from": "Liberia", "to": "Guinea", "value": 2}, {"color": "#903749", "from": "Lithuania", "to": "Belarus", "value": 2}, {"color": "#903749", "from": "Luxembourg", "to": "Belgium", "value": 2}, {"color": "#903749", "from": "Luxembourg", "to": "Germany", "value": 2}, {"color": "#903749", "from": "Luxembourg", "to": "France", "value": 2}, {"color": "#903749", "from": "Latvia", "to": "Belarus", "value": 2}, {"color": "#903749", "from": "Latvia", "to": "Estonia", "value": 2}, {"color": "#903749", "from": "Latvia", "to": "Lithuania", "value": 2}, {"color": "#903749", "from": "Libya", "to": "Algeria", "value": 2}, {"color": "#903749", "from": "Libya", "to": "Egypt", "value": 2}, {"color": "#903749", "from": "Morocco", "to": "Algeria", "value": 2}, {"color": "#903749", "from": "Morocco", "to": "Spain", "value": 2}, {"color": "#903749", "from": "Morocco", "to": "Western Sahara", "value": 2}, {"color": "#903749", "from": "Monaco", "to": "France", "value": 2}, {"color": "#903749", "from": "Montenegro", "to": "Albania", "value": 2}, {"color": "#903749", "from": "Montenegro", "to": "Bosnia and Herzegovina", "value": 2}, {"color": "#903749", "from": "Montenegro", "to": "Croatia", "value": 2}, {"color": "#903749", "from": "North Macedonia", "to": "Albania", "value": 2}, {"color": "#903749", "from": "North Macedonia", "to": "Bulgaria", "value": 2}, {"color": "#903749", "from": "North Macedonia", "to": "Greece", "value": 2}, {"color": "#903749", "from": "Mali", "to": "Algeria", "value": 2}, {"color": "#903749", "from": "Mali", "to": "Burkina Faso", "value": 2}, {"color": "#903749", "from": "Mali", "to": "Cote d\u2019Ivoire", "value": 2}, {"color": "#903749", "from": "Mali", "to": "Guinea", "value": 2}, {"color": "#903749", "from": "Myanmar", "to": "Bangladesh", "value": 2}, {"color": "#903749", "from": "Myanmar", "to": "China", "value": 2}, {"color": "#903749", "from": "Myanmar", "to": "India", "value": 2}, {"color": "#903749", "from": "Myanmar", "to": "Lao People\u0027s Democratic Republic", "value": 2}, {"color": "#903749", "from": "Mongolia", "to": "China", "value": 2}, {"color": "#903749", "from": "Macao", "to": "China", "value": 2}, {"color": "#903749", "from": "Mauritania", "to": "Algeria", "value": 2}, {"color": "#903749", "from": "Mauritania", "to": "Mali", "value": 2}, {"color": "#903749", "from": "Mauritania", "to": "Western Sahara", "value": 2}, {"color": "#903749", "from": "Mexico", "to": "Belize", "value": 2}, {"color": "#903749", "from": "Mexico", "to": "Guatemala", "value": 2}, {"color": "#903749", "from": "Malaysia", "to": "Brunei Darussalam", "value": 2}, {"color": "#903749", "from": "Malaysia", "to": "Indonesia", "value": 2}, {"color": "#903749", "from": "Mozambique", "to": "Malawi", "value": 2}, {"color": "#903749", "from": "Namibia", "to": "Angola", "value": 2}, {"color": "#903749", "from": "Namibia", "to": "Botswana", "value": 2}, {"color": "#903749", "from": "Niger", "to": "Algeria", "value": 2}, {"color": "#903749", "from": "Niger", "to": "Benin", "value": 2}, {"color": "#903749", "from": "Niger", "to": "Burkina Faso", "value": 2}, {"color": "#903749", "from": "Niger", "to": "Libya", "value": 2}, {"color": "#903749", "from": "Niger", "to": "Mali", "value": 2}, {"color": "#903749", "from": "Nigeria", "to": "Benin", "value": 2}, {"color": "#903749", "from": "Nigeria", "to": "Cameroon", "value": 2}, {"color": "#903749", "from": "Nigeria", "to": "Niger", "value": 2}, {"color": "#903749", "from": "Nicaragua", "to": "Costa Rica", "value": 2}, {"color": "#903749", "from": "Nicaragua", "to": "Honduras", "value": 2}, {"color": "#903749", "from": "Netherlands", "to": "Belgium", "value": 2}, {"color": "#903749", "from": "Netherlands", "to": "Germany", "value": 2}, {"color": "#903749", "from": "Norway", "to": "Finland", "value": 2}, {"color": "#903749", "from": "Nepal", "to": "China", "value": 2}, {"color": "#903749", "from": "Nepal", "to": "India", "value": 2}, {"color": "#903749", "from": "Oman", "to": "United Arab Emirates", "value": 2}, {"color": "#903749", "from": "Panama", "to": "Colombia", "value": 2}, {"color": "#903749", "from": "Panama", "to": "Costa Rica", "value": 2}, {"color": "#903749", "from": "Peru", "to": "Bolivia (Plurinational State Of)", "value": 2}, {"color": "#903749", "from": "Peru", "to": "Brazil", "value": 2}, {"color": "#903749", "from": "Peru", "to": "Chile", "value": 2}, {"color": "#903749", "from": "Peru", "to": "Colombia", "value": 2}, {"color": "#903749", "from": "Peru", "to": "Ecuador", "value": 2}, {"color": "#903749", "from": "Papua New Guinea", "to": "Indonesia", "value": 2}, {"color": "#903749", "from": "Pakistan", "to": "Afghanistan", "value": 2}, {"color": "#903749", "from": "Pakistan", "to": "China", "value": 2}, {"color": "#903749", "from": "Pakistan", "to": "India", "value": 2}, {"color": "#903749", "from": "Pakistan", "to": "Iran (Islamic Republic of)", "value": 2}, {"color": "#903749", "from": "Poland", "to": "Belarus", "value": 2}, {"color": "#903749", "from": "Poland", "to": "Czechia", "value": 2}, {"color": "#903749", "from": "Poland", "to": "Germany", "value": 2}, {"color": "#903749", "from": "Poland", "to": "Lithuania", "value": 2}, {"color": "#903749", "from": "Palestine, State of", "to": "Egypt", "value": 2}, {"color": "#903749", "from": "Palestine, State of", "to": "Israel", "value": 2}, {"color": "#903749", "from": "Palestine, State of", "to": "Jordan", "value": 2}, {"color": "#903749", "from": "Portugal", "to": "Spain", "value": 2}, {"color": "#903749", "from": "Paraguay", "to": "Argentina", "value": 2}, {"color": "#903749", "from": "Paraguay", "to": "Bolivia (Plurinational State Of)", "value": 2}, {"color": "#903749", "from": "Paraguay", "to": "Brazil", "value": 2}, {"color": "#903749", "from": "Romania", "to": "Bulgaria", "value": 2}, {"color": "#903749", "from": "Romania", "to": "Hungary", "value": 2}, {"color": "#903749", "from": "Romania", "to": "Moldova (the Republic of)", "value": 2}, {"color": "#903749", "from": "Serbia", "to": "Albania", "value": 2}, {"color": "#903749", "from": "Serbia", "to": "Bosnia and Herzegovina", "value": 2}, {"color": "#903749", "from": "Serbia", "to": "Bulgaria", "value": 2}, {"color": "#903749", "from": "Serbia", "to": "Croatia", "value": 2}, {"color": "#903749", "from": "Serbia", "to": "Hungary", "value": 2}, {"color": "#903749", "from": "Serbia", "to": "Montenegro", "value": 2}, {"color": "#903749", "from": "Serbia", "to": "North Macedonia", "value": 2}, {"color": "#903749", "from": "Serbia", "to": "Romania", "value": 2}, {"color": "#903749", "from": "Russian Federation", "to": "Azerbaijan", "value": 2}, {"color": "#903749", "from": "Russian Federation", "to": "Belarus", "value": 2}, {"color": "#903749", "from": "Russian Federation", "to": "China", "value": 2}, {"color": "#903749", "from": "Russian Federation", "to": "Estonia", "value": 2}, {"color": "#903749", "from": "Russian Federation", "to": "Finland", "value": 2}, {"color": "#903749", "from": "Russian Federation", "to": "Georgia", "value": 2}, {"color": "#903749", "from": "Russian Federation", "to": "Kazakhstan", "value": 2}, {"color": "#903749", "from": "Russian Federation", "to": "Korea (Democratic People\u0027s Republic of)", "value": 2}, {"color": "#903749", "from": "Russian Federation", "to": "Latvia", "value": 2}, {"color": "#903749", "from": "Russian Federation", "to": "Lithuania", "value": 2}, {"color": "#903749", "from": "Russian Federation", "to": "Mongolia", "value": 2}, {"color": "#903749", "from": "Russian Federation", "to": "Norway", "value": 2}, {"color": "#903749", "from": "Russian Federation", "to": "Poland", "value": 2}, {"color": "#903749", "from": "Rwanda", "to": "Burundi", "value": 2}, {"color": "#903749", "from": "Rwanda", "to": "Congo (the Democratic Republic of the)", "value": 2}, {"color": "#903749", "from": "Saudi Arabia", "to": "Iraq", "value": 2}, {"color": "#903749", "from": "Saudi Arabia", "to": "Jordan", "value": 2}, {"color": "#903749", "from": "Saudi Arabia", "to": "Kuwait", "value": 2}, {"color": "#903749", "from": "Saudi Arabia", "to": "Oman", "value": 2}, {"color": "#903749", "from": "Saudi Arabia", "to": "Qatar", "value": 2}, {"color": "#903749", "from": "Saudi Arabia", "to": "United Arab Emirates", "value": 2}, {"color": "#903749", "from": "Sudan", "to": "Central African Republic", "value": 2}, {"color": "#903749", "from": "Sudan", "to": "Egypt", "value": 2}, {"color": "#903749", "from": "Sudan", "to": "Ethiopia", "value": 2}, {"color": "#903749", "from": "Sudan", "to": "Eritrea", "value": 2}, {"color": "#903749", "from": "Sudan", "to": "Libya", "value": 2}, {"color": "#903749", "from": "Sweden", "to": "Finland", "value": 2}, {"color": "#903749", "from": "Sweden", "to": "Norway", "value": 2}, {"color": "#903749", "from": "Slovenia", "to": "Austria", "value": 2}, {"color": "#903749", "from": "Slovenia", "to": "Croatia", "value": 2}, {"color": "#903749", "from": "Slovenia", "to": "Hungary", "value": 2}, {"color": "#903749", "from": "Slovenia", "to": "Italy", "value": 2}, {"color": "#903749", "from": "Slovakia", "to": "Austria", "value": 2}, {"color": "#903749", "from": "Slovakia", "to": "Czechia", "value": 2}, {"color": "#903749", "from": "Slovakia", "to": "Hungary", "value": 2}, {"color": "#903749", "from": "Slovakia", "to": "Poland", "value": 2}, {"color": "#903749", "from": "Sierra Leone", "to": "Guinea", "value": 2}, {"color": "#903749", "from": "Sierra Leone", "to": "Liberia", "value": 2}, {"color": "#903749", "from": "San Marino", "to": "Italy", "value": 2}, {"color": "#903749", "from": "Senegal", "to": "Gambia (the)", "value": 2}, {"color": "#903749", "from": "Senegal", "to": "Guinea", "value": 2}, {"color": "#903749", "from": "Senegal", "to": "Guinea-Bissau", "value": 2}, {"color": "#903749", "from": "Senegal", "to": "Mali", "value": 2}, {"color": "#903749", "from": "Senegal", "to": "Mauritania", "value": 2}, {"color": "#903749", "from": "Somalia", "to": "Djibouti", "value": 2}, {"color": "#903749", "from": "Somalia", "to": "Ethiopia", "value": 2}, {"color": "#903749", "from": "Somalia", "to": "Kenya", "value": 2}, {"color": "#903749", "from": "Suriname", "to": "Brazil", "value": 2}, {"color": "#903749", "from": "Suriname", "to": "French Guiana", "value": 2}, {"color": "#903749", "from": "Suriname", "to": "Guyana", "value": 2}, {"color": "#903749", "from": "South Sudan", "to": "Central African Republic", "value": 2}, {"color": "#903749", "from": "South Sudan", "to": "Congo (the Democratic Republic of the)", "value": 2}, {"color": "#903749", "from": "South Sudan", "to": "Ethiopia", "value": 2}, {"color": "#903749", "from": "South Sudan", "to": "Kenya", "value": 2}, {"color": "#903749", "from": "South Sudan", "to": "Sudan", "value": 2}, {"color": "#903749", "from": "El Salvador", "to": "Guatemala", "value": 2}, {"color": "#903749", "from": "El Salvador", "to": "Honduras", "value": 2}, {"color": "#903749", "from": "Sint Maarten (Dutch part)", "to": "Saint Martin (French part)", "value": 2}, {"color": "#903749", "from": "Syrian Arab Republic", "to": "Iraq", "value": 2}, {"color": "#903749", "from": "Syrian Arab Republic", "to": "Israel", "value": 2}, {"color": "#903749", "from": "Syrian Arab Republic", "to": "Jordan", "value": 2}, {"color": "#903749", "from": "Syrian Arab Republic", "to": "Lebanon", "value": 2}, {"color": "#903749", "from": "Eswatini", "to": "Mozambique", "value": 2}, {"color": "#903749", "from": "Chad", "to": "Cameroon", "value": 2}, {"color": "#903749", "from": "Chad", "to": "Central African Republic", "value": 2}, {"color": "#903749", "from": "Chad", "to": "Libya", "value": 2}, {"color": "#903749", "from": "Chad", "to": "Niger", "value": 2}, {"color": "#903749", "from": "Chad", "to": "Nigeria", "value": 2}, {"color": "#903749", "from": "Chad", "to": "Sudan", "value": 2}, {"color": "#903749", "from": "Togo", "to": "Benin", "value": 2}, {"color": "#903749", "from": "Togo", "to": "Burkina Faso", "value": 2}, {"color": "#903749", "from": "Togo", "to": "Ghana", "value": 2}, {"color": "#903749", "from": "Thailand", "to": "Cambodia", "value": 2}, {"color": "#903749", "from": "Thailand", "to": "Lao People\u0027s Democratic Republic", "value": 2}, {"color": "#903749", "from": "Thailand", "to": "Malaysia", "value": 2}, {"color": "#903749", "from": "Thailand", "to": "Myanmar", "value": 2}, {"color": "#903749", "from": "Tajikistan", "to": "Afghanistan", "value": 2}, {"color": "#903749", "from": "Tajikistan", "to": "China", "value": 2}, {"color": "#903749", "from": "Tajikistan", "to": "Kyrgyzstan", "value": 2}, {"color": "#903749", "from": "Timor-Leste", "to": "Indonesia", "value": 2}, {"color": "#903749", "from": "Turkmenistan", "to": "Afghanistan", "value": 2}, {"color": "#903749", "from": "Turkmenistan", "to": "Iran (Islamic Republic of)", "value": 2}, {"color": "#903749", "from": "Turkmenistan", "to": "Kazakhstan", "value": 2}, {"color": "#903749", "from": "Tunisia", "to": "Algeria", "value": 2}, {"color": "#903749", "from": "Tunisia", "to": "Libya", "value": 2}, {"color": "#903749", "from": "Turkey", "to": "Armenia", "value": 2}, {"color": "#903749", "from": "Turkey", "to": "Azerbaijan", "value": 2}, {"color": "#903749", "from": "Turkey", "to": "Bulgaria", "value": 2}, {"color": "#903749", "from": "Turkey", "to": "Georgia", "value": 2}, {"color": "#903749", "from": "Turkey", "to": "Greece", "value": 2}, {"color": "#903749", "from": "Turkey", "to": "Iran (Islamic Republic of)", "value": 2}, {"color": "#903749", "from": "Turkey", "to": "Iraq", "value": 2}, {"color": "#903749", "from": "Turkey", "to": "Syrian Arab Republic", "value": 2}, {"color": "#903749", "from": "Tanzania (the United Republic of)", "to": "Burundi", "value": 2}, {"color": "#903749", "from": "Tanzania (the United Republic of)", "to": "Congo (the Democratic Republic of the)", "value": 2}, {"color": "#903749", "from": "Tanzania (the United Republic of)", "to": "Kenya", "value": 2}, {"color": "#903749", "from": "Tanzania (the United Republic of)", "to": "Malawi", "value": 2}, {"color": "#903749", "from": "Tanzania (the United Republic of)", "to": "Mozambique", "value": 2}, {"color": "#903749", "from": "Tanzania (the United Republic of)", "to": "Rwanda", "value": 2}, {"color": "#903749", "from": "Ukraine", "to": "Belarus", "value": 2}, {"color": "#903749", "from": "Ukraine", "to": "Hungary", "value": 2}, {"color": "#903749", "from": "Ukraine", "to": "Moldova (the Republic of)", "value": 2}, {"color": "#903749", "from": "Ukraine", "to": "Poland", "value": 2}, {"color": "#903749", "from": "Ukraine", "to": "Romania", "value": 2}, {"color": "#903749", "from": "Ukraine", "to": "Russian Federation", "value": 2}, {"color": "#903749", "from": "Ukraine", "to": "Slovakia", "value": 2}, {"color": "#903749", "from": "Uganda", "to": "Congo (the Democratic Republic of the)", "value": 2}, {"color": "#903749", "from": "Uganda", "to": "Kenya", "value": 2}, {"color": "#903749", "from": "Uganda", "to": "Rwanda", "value": 2}, {"color": "#903749", "from": "Uganda", "to": "South Sudan", "value": 2}, {"color": "#903749", "from": "Uganda", "to": "Tanzania (the United Republic of)", "value": 2}, {"color": "#903749", "from": "United States of America", "to": "Canada", "value": 2}, {"color": "#903749", "from": "United States of America", "to": "Mexico", "value": 2}, {"color": "#903749", "from": "Uruguay", "to": "Argentina", "value": 2}, {"color": "#903749", "from": "Uruguay", "to": "Brazil", "value": 2}, {"color": "#903749", "from": "Uzbekistan", "to": "Afghanistan", "value": 2}, {"color": "#903749", "from": "Uzbekistan", "to": "Kazakhstan", "value": 2}, {"color": "#903749", "from": "Uzbekistan", "to": "Kyrgyzstan", "value": 2}, {"color": "#903749", "from": "Uzbekistan", "to": "Tajikistan", "value": 2}, {"color": "#903749", "from": "Uzbekistan", "to": "Turkmenistan", "value": 2}, {"color": "#903749", "from": "Holy See", "to": "Italy", "value": 2}, {"color": "#903749", "from": "Venezuela (Bolivarian Republic of)", "to": "Brazil", "value": 2}, {"color": "#903749", "from": "Venezuela (Bolivarian Republic of)", "to": "Colombia", "value": 2}, {"color": "#903749", "from": "Venezuela (Bolivarian Republic of)", "to": "Guyana", "value": 2}, {"color": "#903749", "from": "Viet Nam", "to": "Cambodia", "value": 2}, {"color": "#903749", "from": "Viet Nam", "to": "China", "value": 2}, {"color": "#903749", "from": "Viet Nam", "to": "Lao People\u0027s Democratic Republic", "value": 2}, {"color": "#903749", "from": "Yemen", "to": "Oman", "value": 2}, {"color": "#903749", "from": "Yemen", "to": "Saudi Arabia", "value": 2}, {"color": "#903749", "from": "South Africa", "to": "Botswana", "value": 2}, {"color": "#903749", "from": "South Africa", "to": "Lesotho", "value": 2}, {"color": "#903749", "from": "South Africa", "to": "Mozambique", "value": 2}, {"color": "#903749", "from": "South Africa", "to": "Namibia", "value": 2}, {"color": "#903749", "from": "South Africa", "to": "Eswatini", "value": 2}, {"color": "#903749", "from": "Zambia", "to": "Angola", "value": 2}, {"color": "#903749", "from": "Zambia", "to": "Botswana", "value": 2}, {"color": "#903749", "from": "Zambia", "to": "Congo (the Democratic Republic of the)", "value": 2}, {"color": "#903749", "from": "Zambia", "to": "Malawi", "value": 2}, {"color": "#903749", "from": "Zambia", "to": "Mozambique", "value": 2}, {"color": "#903749", "from": "Zambia", "to": "Namibia", "value": 2}, {"color": "#903749", "from": "Zambia", "to": "Tanzania (the United Republic of)", "value": 2}, {"color": "#903749", "from": "Zimbabwe", "to": "Botswana", "value": 2}, {"color": "#903749", "from": "Zimbabwe", "to": "Mozambique", "value": 2}, {"color": "#903749", "from": "Zimbabwe", "to": "South Africa", "value": 2}, {"color": "#903749", "from": "Zimbabwe", "to": "Zambia", "value": 2}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": true,
+            "type": "dynamic"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "forceAtlas2Based": {
+            "avoidOverlap": 0,
+            "centralGravity": 0.01,
+            "damping": 0.4,
+            "gravitationalConstant": -70,
+            "springConstant": 0.08,
+            "springLength": 100
+        },
+        "solver": "forceAtlas2Based",
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                //   var selectInput = document.getElementById("select-node");
+                //   selectInput.addEventListener("mouseup", function(event) {event.preventDefault(); this.select();});
+                    
+
+                  
+                    network.on("selectNode", neighbourhoodHighlight);
+                    network.on("click", function (params) {if (params.nodes.length == 0) {neighbourhoodHighlight({nodes: []})}});
+
+                  
+
+
+                  
+                      network.on("stabilizationProgress", function(params) {
+                          document.getElementById('loadingBar').removeAttribute("style");
+                          var maxWidth = 496;
+                          var minWidth = 20;
+                          var widthFactor = params.iterations/params.total;
+                          var width = Math.max(minWidth,maxWidth * widthFactor);
+                          document.getElementById('bar').style.width = width + 'px';
+                          document.getElementById('text').innerHTML = Math.round(widthFactor*100) + '%';
+                      });
+                      network.once("stabilizationIterationsDone", function() {
+                          document.getElementById('text').innerHTML = '100%';
+                          document.getElementById('bar').style.width = '496px';
+                          document.getElementById('loadingBar').style.opacity = 0;
+                          // really clean the dom element
+                          setTimeout(function () {document.getElementById('loadingBar').style.display = 'none';}, 500);
+                      });
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>
